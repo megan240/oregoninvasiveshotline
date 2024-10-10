@@ -22,7 +22,7 @@ from django.db import transaction
 from django.urls import reverse
 from django.test import TestCase, TransactionTestCase
 
-from model_mommy.mommy import make, prepare
+from model_bakery.baker import make, prepare
 
 from oregoninvasiveshotline.utils.test.user import UserMixin
 from oregoninvasiveshotline.comments.forms import CommentForm

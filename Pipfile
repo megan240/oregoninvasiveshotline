@@ -21,8 +21,9 @@ gunicorn = "~=22.0.0"
 djangorestframework = "~=3.15.0"
 django-bootstrap-form = "==3.4"
 sentry-sdk = "~=1.45.0"
+model-bakery = "*"
 
 [dev-packages]
 coverage = "*"
 flake8 = "*"
-model_mommy = "*"
+model_bakery = "*"

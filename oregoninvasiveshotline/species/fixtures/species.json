@@ -1136,7 +1136,7 @@
         "severity": 3,
         "resources": "",
         "scientific_name": "Rana catesbeiana",
-        "category": 5,
+        "category": 13,
         "name": "Bullfrog, American",
         "is_confidential": false
     },
@@ -1149,7 +1149,7 @@
         "severity": 3,
         "resources": "",
         "scientific_name": "Trachemys scripta elegans",
-        "category": 5,
+        "category": 13,
         "name": "Turtle, Red-Eared Slider",
         "is_confidential": false
     },
@@ -1162,7 +1162,7 @@
         "severity": 3,
         "resources": "",
         "scientific_name": "Salvelinus fontinalis",
-        "category": 5,
+        "category": 13,
         "name": "Trout, Brook ",
         "is_confidential": false
     },
@@ -2306,7 +2306,7 @@
         "severity": 1,
         "resources": "",
         "scientific_name": "Ambystoma gracile",
-        "category": 5,
+        "category": 13,
         "name": "Salamander, Northwest",
         "is_confidential": false
     },
@@ -2345,7 +2345,7 @@
         "severity": 1,
         "resources": "",
         "scientific_name": "Pseudacris regilla",
-        "category": 5,
+        "category": 13,
         "name": "Frog, Pacific Tree",
         "is_confidential": false
     },
@@ -2514,7 +2514,7 @@
         "severity": 1,
         "resources": "",
         "scientific_name": "Taricha granulosa",
-        "category": 5,
+        "category": 13,
         "name": "Newt, Rough-Skinned",
         "is_confidential": false
     },
@@ -2527,7 +2527,7 @@
         "severity": 1,
         "resources": "",
         "scientific_name": "Dicamptodon ensatus",
-        "category": 5,
+        "category": 13,
         "name": "Salamander, Pacific Giant",
         "is_confidential": false
     },

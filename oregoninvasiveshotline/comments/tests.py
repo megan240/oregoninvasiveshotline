@@ -6,7 +6,7 @@ from django.test import TestCase, TransactionTestCase
 from django.db import transaction
 from django.urls import reverse
 
-from model_mommy.mommy import make
+from model_bakery.baker import make
 
 from oregoninvasiveshotline.utils.test.user import UserMixin
 from oregoninvasiveshotline.images.models import Image

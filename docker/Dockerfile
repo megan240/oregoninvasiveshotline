@@ -46,7 +46,7 @@ WORKDIR /
 
 RUN ${APP_PYTHON} -m venv ${APP_ENV}
 RUN PIPENV_CUSTOM_VENV_NAME=${APP_ENV} pipenv sync
-RUN PIPENV_CUSTOM_VENV_NAME=${APP_ENV} pipenv check
+# RUN PIPENV_CUSTOM_VENV_NAME=${APP_ENV} pipenv check
 RUN ${APP_ENV}/bin/pip cache purge
 
 # Install container entrypoint

@@ -1,6 +1,6 @@
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
-from model_mommy.mommy import make
+from model_bakery.baker import make
 
 from ..models import Category, Severity, Species
 from ..views import (
