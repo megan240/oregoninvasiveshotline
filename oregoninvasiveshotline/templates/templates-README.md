@@ -23,7 +23,6 @@ It's then going to find
 ```django
 {% block main_class %}{% endblock %}
 ```
-* the `container-fluid` now becomes the class associated with this. So the `home.html` page can now reference the `base.html` and change it for jsut the html page, without worrying about the "default" case of calling the class on other pages that also utilize/extend the `base.html`
 Same for the following:
 ```django
 {% block body_class %}{% endblock %}
