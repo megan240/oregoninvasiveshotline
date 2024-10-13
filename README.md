@@ -16,14 +16,100 @@ about the species that was reported
 
 Ensure that you have Docker and Docker Compose installed in your host's environment.
 
+Rename the `.env-default` to `.env`
+
+### <u>Comment out certain lines of code</u>
+
+#### File 1 - `.env-default`
+
+It is necessary to either rename or copy this file so that it is listed as `.env`
+
+```console
+$ cp .env-default .env
+```
+
+#### File 2 - `docker-compose.yml`
+
+Nested within the `services:` object :
+
+```yml
+---
+volumes:
+  # - ${VOLUME_PATH}/postgres/11/main:/var/lib/postgresql/data
+  - ${VOLUME_PATH}/dumps:/archive
+```
+
+#### File 3 - `docker/Dockerfile`
+
+Under the comment **Configure python virutal environment**
+
+```Dockerfile
+# Configure python virtual environment
+...
+RUN PIPENV_CUSTOM_VENV_NAME=${APP_ENV} pipenv sync
+# RUN PIPENV_CUSTOM_VENV_NAME=${APP_ENV} pipenv check
+RUN ${APP_ENV}/bin/pip cache purge
+...
+```
+
+### Install Data Fixtures
+
+The species fixture appears to be out-of-date. Edit the fixture `oregoninvasiveshotline/species/fixtures/species.json
+` by:
+Replace all occurences of:
+
+```json
+"category": 5,
+```
+
+with the following:
+
+```json
+"category": 13,
+```
+
+### Local Environent Bootstrapping for using Database
+
 To use the provided Docker container definitions:
 
-    docker-compose up -d
+#### Firstly - Prepare Container:
+
+```console
+$ docker-compose up -d
+$ docker-compose ps
+```
+
+```console
+$ docker-compose build
+```
+
+#### Secondly - Prepare Database:
+
+You want to make sure that the Docker Container is running at this point, <u>**before**</u> typing the following:
+
+```console
+$ docker compose up -d postgres && docker compose logs -f postgres
+```
+
+- may need to hit ctrl-c afterward
+
+This image will reinitialize your local database with its file-backed storage on the path ${VOLUME_PATH}/postgres/11/main.
+
+Run the bootstrap container in order to ensure that the application is created and up-to-date:
+
+```console
+$ docker compose up -d bootstrap && docker compose logs -f bootstrap
+```
+
+## Credentials for default user of Database/Admin
 
 To authenticate with the provided default user:
 
-    username: foobar@example.com
-    password: foobar
+`username: foobar@example.com`
+
+`password: foobar`
+
+## A google API Key is Necessary
 
 A Google API Key is needed for the mapping features in this project. In
 development environments (native or docker) you should export an environment variable, eg:
