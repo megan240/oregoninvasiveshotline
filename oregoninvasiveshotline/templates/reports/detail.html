@@ -249,7 +249,7 @@ Report #{{ report.pk }} - {{ report }}
                 var map = new google.maps.Map(document.getElementById('map-canvas'), options);
 
                 // draw the marker on the map where the report was located
-                var marker = new google.maps.Marker({
+                var marker = new google.maps.AdvancedMarkerElement({
                     position: {
                         lat: {{ report.point.y }}, lng: {{ report.point.x }}
                     },
