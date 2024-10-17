@@ -1,44 +1,18 @@
-function resizeImage(img){
-    /*
-    Returns the image element as a dataurl resized to be at most 800x600
-    */
-    var MAX_WIDTH = 800.0;
-    var MAX_HEIGHT = 600.0;
-
-    var width = img.width;
-    var height = img.height;
-    var canvas = $('<canvas>');
-    canvas.css({"display": "none"})
-    $('body').append(canvas)
-    var scale = Math.min(MAX_HEIGHT/height, MAX_WIDTH/width)
-    if(scale < 1){
-        height *= scale;
-        width *= scale;
-    }
-
-    canvas.attr('width', width);
-    canvas.attr('height', height);
-
-    var raw_canvas = canvas.get(0);
-    var ctx = raw_canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, width, height)
-    var dataurl = raw_canvas.toDataURL("image/jpeg");
-    canvas.remove()
-    return dataurl
-}
-
 $(document).ready(function(){
     // bail out if the browser doesn't support the filereader
     try {
         new FileReader();
     } catch(e) {
-        return
+        return;
     }
 
-    // whenever an image is selected, resize it and generate a preview of it
+    // whenever an image is selected, generate a preview of it with scaling
     $('#images').on('change', 'input[type="file"]', function(e){
         var files = $(this).get(0).files;
         $('#previews').html("");
+
+        var MAX_WIDTH = 100;
+        var MAX_HEIGHT = 100;
 
         for(var i = 0; i < files.length; i++){
             var file = files[i];
@@ -50,16 +24,36 @@ $(document).ready(function(){
                     var preview = $("<img />");
                     append_to.html(preview);
                     preview.attr('src', this.result);
+
                     preview.on("load", function(){
-                        encoded_image.val(resizeImage(preview.get(0)))
-                        preview.attr("width", 100)
-                        // remove the input element, so the full sized image
-                        // isn't POSTed
-                        element.remove()
-                    })
-                }.bind(reader, i, $(this))
+                        var img = preview.get(0);
+
+                        // Scaling logic to maintain aspect ratio
+                        var width = img.width;
+                        var height = img.height;
+                        var widthScale = MAX_WIDTH / width;
+                        var heightScale = MAX_HEIGHT / height;
+                        var scale = Math.min(widthScale, heightScale);
+
+                        // If image is larger than the max dimensions, scale it down
+                        if (scale < 1) {
+                            width = width * scale;
+                            height = height * scale;
+                        }
+
+                        // Apply the scaled dimensions to the preview image
+                        preview.css({
+                            'width': width + 'px',
+                            'height': height + 'px',
+                            'object-fit': 'contain'  // Ensures the aspect ratio is maintained
+                        });
+
+                        encoded_image.val(img.src);  // No resizing the actual image
+                        element.remove(); // remove the input element
+                    });
+                }.bind(reader, i, $(this));
                 reader.readAsDataURL(file);
             }
         }
-    })
+    });
 });
