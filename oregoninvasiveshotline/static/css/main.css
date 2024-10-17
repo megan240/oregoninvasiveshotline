@@ -1,3 +1,12 @@
+:root{
+    --black: black;
+    --inv-green: #577716;
+    --inv-orange: #DD8E19;
+    --lightblue: lightblue;
+    --white: white;
+
+}
+
 html, body {
     background-color:#3a7a16;
     font-family: Verdana, Geneva, sans-serif;
@@ -60,21 +69,21 @@ select[multiple] {
     width: 100%;
 }
 
-#header {
+/* #header {
     text-align:center;
     padding-bottom:20px;
     margin-bottom:5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-}
+} */
 
 
 /* the element right after the header should have a top border radius */
-#header + * {
+/* #header + * {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     padding-top:20px;
-}
+} */
 
 #header-links,
 #auth-links {
@@ -535,3 +544,89 @@ blockquote {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/*Work of Taylor Below*/
+body#body {
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+header#header{
+    width: 100%;
+    height: 95px;
+    margin-bottom: 20px;
+}
+
+a.login-button, button.login-button {
+    position: absolute;
+    top: 30px;
+    right: 25px;
+    border: 1px solid var(--inv-orange);
+    border-radius: 20px;
+    background-color: var(--inv-orange);
+    color: var(--white);
+    font-size: 1em;
+    margin: 0;
+    padding: 5px 15px;
+    float: right;
+}
+
+div.login-button {
+    margin: auto;
+    padding: auto;
+}
+
+a.login-button:hover {
+    text-decoration: none;
+    border: 1px solid var(--inv-orange);
+    background-color: var(--white);
+    color: var(--inv-orange);
+}
+
+main#main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+footer#footer{
+    padding-top: 50px;
+    background-color: var(--white);
+    width: 100%;
+}
+
+#footer-sponsors {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#footer-sponsors a {
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 120px;
+    width: fit-content;
+}
+
+footer p {
+    text-align: center;
+    font-size: .75em;
+    color: var(--black);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+footer p a:link {
+    color: var(--black);
+    text-decoration: underline;
+    
+}
+
+footer p a:visited {
+    color: var(--black);
+}
+
+footer p a:hover {
+    font-weight: bold;
+}
+
