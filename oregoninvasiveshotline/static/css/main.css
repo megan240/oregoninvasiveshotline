@@ -552,6 +552,10 @@ body#body {
     margin-right: auto;
 }
 
+<<<<<<< HEAD
+=======
+/* --- Header with Banner and Login button --- */
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
 header#header{
     width: 100%;
     height: 95px;
@@ -562,7 +566,11 @@ a.login-button, button.login-button {
     position: absolute;
     top: 30px;
     right: 25px;
+<<<<<<< HEAD
     border: 1px solid var(--inv-orange);
+=======
+    border: 2px solid var(--inv-orange);
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
     border-radius: 20px;
     background-color: var(--inv-orange);
     color: var(--white);
@@ -579,16 +587,78 @@ div.login-button {
 
 a.login-button:hover {
     text-decoration: none;
+<<<<<<< HEAD
     border: 1px solid var(--inv-orange);
+=======
+    border: 2px solid var(--inv-orange);
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
     background-color: var(--white);
     color: var(--inv-orange);
 }
 
+<<<<<<< HEAD
 main#main{
     margin-left: 20px;
     margin-right: 20px;
 }
 
+=======
+/* --- navigation bar --- */
+#navbar{
+    width: 1440px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    padding-top: 1px;
+    background-color: var(--inv-green);
+    border-color: var(--inv-green);
+}
+
+#navbar ul {
+    display: inline-block;
+    width: 100%;
+    height: 45px;
+    padding-left: 15%;
+    list-style-type: none;
+}
+
+#navbar ul li{
+    display: inline-block;
+    width: fit-content;
+    height: 45px;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.navbaranchor {
+    border: 2px solid var(--inv-green);
+    border-radius: 25px;
+    float: left;
+    width: fit-content;
+    height: 45px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 45px;
+    margin: 0;
+    color: var(--white);
+}
+
+.navbaranchor:hover {
+    border: 2px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* --- main block that other templates rely on --- */
+main#main {
+    margin-top: 2px;
+}
+
+
+/* --- the footer that contains sponsor logos and copyright --- */
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
 footer#footer{
     padding-top: 50px;
     background-color: var(--white);
@@ -605,6 +675,10 @@ footer#footer{
     display: inline-block;
     padding-left: 30px;
     padding-right: 120px;
+<<<<<<< HEAD
+=======
+    padding-bottom: 15px;
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
     width: fit-content;
 }
 

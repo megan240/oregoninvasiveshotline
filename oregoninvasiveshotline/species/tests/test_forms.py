@@ -1,5 +1,5 @@
 from django.test import TestCase
-from model_mommy.mommy import make
+from model_bakery.baker import make
 
 from oregoninvasiveshotline.users.models import User
 

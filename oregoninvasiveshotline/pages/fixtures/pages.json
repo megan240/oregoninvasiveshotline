@@ -49,7 +49,7 @@
         "enable_comments": false,
         "url": "/_headline/",
         "title": "headline",
-        "content": "<p><big>Have you seen something suspicious in your backyard or neighborhood?</big> Are you having trouble identifying something you've found? Report potential invasive species you've found to the Online Hotline. Your submission will provide vital early detection information to the experts working to stop the next invasion before it starts!</p>",
+        "content": "<p class=\"heading-map\">Have you spotted an invasive species that a natural resource manager should know about?</big> </p>",
         "template_name": "",
         "registration_required": false,
         "sites": [
@@ -64,7 +64,7 @@
         "enable_comments": false,
         "url": "/_midline/",
         "title": "midline",
-        "content": "<h1>Help stop the spread of invasive species in Oregon</h1>\r\n<p>In their efforts to detect new outbreaks, invasive species experts in Oregon\r\n    face the daunting challenge of tracking hundreds of potential new invaders\r\n    across millions of acres of farms, forests, and waterways. They can't do it\r\n    alone. <strong>They need the help of all Oregonians to be their eyes in the field.</strong></p>\r\n\r\n<p>The Oregon Invasive Species Online Hotline is designed to help you become\r\n    involved in this effort. By using the Online Hotline to report suspected\r\n    invasive species in your area, you'll be contributing vital early detection\r\n    information to the experts best able to stop the spread of invasives. The\r\n    Online Hotline also lets you connect directly with an expert to get positive\r\n    identifications and answers to your questions.</p>",
+        "content": "<div class=\"midline-heading\">Help stop the spread of invasive species in Oregon</div>\r\n<p>In their efforts to detect new outbreaks, invasive species experts in Oregon\r\n    face the daunting challenge of tracking hundreds of potential new invaders\r\n    across millions of acres of farms, forests, and waterways. They can't do it\r\n    alone. <strong>They need the help of all Oregonians to be their eyes in the field.</strong></p>\r\n\r\n<p>The Oregon Invasive Species Online Hotline is designed to help you become\r\n    involved in this effort. By using the Online Hotline to report suspected\r\n    invasive species in your area, you'll be contributing vital early detection\r\n    information to the experts best able to stop the spread of invasives. The\r\n    Online Hotline also lets you connect directly with an expert to get positive\r\n    identifications and answers to your questions.</p>",
         "template_name": "",
         "registration_required": false,
         "sites": [
@@ -79,7 +79,7 @@
         "enable_comments": false,
         "url": "/_midline-block1/",
         "title": "_midline-block1",
-        "content": "<strong><a href=\"/pages/learn\">Learn</a></strong> - Familiarize yourself with the potential invasive species in the areas where you live or visit frequently. Get started with <a href=\"http://www.opb.org/programs/invasives/guide.php\" title=\"The Silent Invasion: Quick Guide\">the Silent Invasion Quick Guide</a> or the <a href=\"http://www.nature.org/ourinitiatives/regions/northamerica/unitedstates/oregon/howwework/gardensmart-oregon.xml\" title=\"\">GardenSmart Oregon booklet</a>.",
+        "content": "<p class=\"main-text\"><a href=\"/pages/learn/\" class=\"green-link\" target=\"_blank\" rel=\"noopener noreferrer\">Learn More</a> - </p> <p class=\"sub-text\">Familiarize yourself with the potential invasive species in the areas where you live or visit frequently. Get started with <a href=\"http://www.opb.org/programs/invasives/guide.php\" title=\"The Silent Invasion: Quick Guide\">the Silent Invasion Quick Guide</a> or the <a href=\"http://www.nature.org/ourinitiatives/regions/northamerica/unitedstates/oregon/howwework/gardensmart-oregon.xml\" title=\"\">GardenSmart Oregon booklet</a>.</p>",
         "template_name": "",
         "registration_required": false,
         "sites": [
@@ -94,7 +94,7 @@
         "enable_comments": false,
         "url": "/_midline-block2/",
         "title": "_midline-block2",
-        "content": "<strong><a href=\"/pages/look\">Look</a></strong> - Wherever you are - hiking in the forest, on a fishing trip or digging in your garden - keep your eye out for unusual animals or plants that you have never seen before and be prepared to take a picture and document your find.",
+        "content": "<p class=\"main-text\"><a href=\"/pages/look\" class=\"green-link\" target=\"_blank\"rel=\"noopener noreferrer\">Where to Look</a> - </p>  <p class=\"sub-text\">Wherever you are - hiking in the forest, on a fishing trip or digging in your garden - keep your eye out for unusual animals or plants that you have never seen before and be prepared to take a picture and document your find.</p>",
         "template_name": "",
         "registration_required": false,
         "sites": [
@@ -109,7 +109,7 @@
         "enable_comments": false,
         "url": "/_midline-block3/",
         "title": "_midline-block3",
-        "content": "<strong><a href=\"/pages/report\">Report</a></strong> - Use the Online Hotline to report your find.",
+        "content": "<p class=\"main-text\"><a href=\"/pages/report\" class=\"green-link\" target=\"_blank\"rel=\"noopener noreferrer\">Steps on Report</a> - </p>  <p class=\"sub-text\">Submit your observations through the Online Hotline. Provide all relevant details and upload your photos. This information will help experts assess the species and help with early detection.</p>",
         "template_name": "",
         "registration_required": false,
         "sites": [
@@ -124,7 +124,7 @@
         "enable_comments": false,
         "url": "/_midline-footer/",
         "title": "_midline-footer",
-        "content": "<p>To protect Oregon from invasive species, it is important to stop new outbreaks before they start. By the time an invader is easily noticeable and begins to cause damage, it is often too late. It can be difficult and expensive to remove an established invader. However, by detecting new outbreaks early and acting quickly to control them, we can avoid many of the environmental and economic losses caused by invasive species.</p>",
+        "content": "<p class=\"footer-text\">Are you here to report a potential Emerald Ash Borer sighting? <a href=\"https://en.wikipedia.org/wiki/Buprestis_aurulenta#/media/File:Golden_Buprestid_(14881767118).jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Click here</a> for more information.</p>",
         "template_name": "",
         "registration_required": false,
         "sites": [

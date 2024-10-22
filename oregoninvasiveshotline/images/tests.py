@@ -7,7 +7,7 @@ from django.contrib.gis.geos import Point
 from django.forms.models import modelformset_factory
 from django.test import TestCase
 
-from model_mommy.mommy import make
+from model_bakery.baker import make
 
 from oregoninvasiveshotline.utils.test.user import UserMixin
 from oregoninvasiveshotline.reports.models import Report
