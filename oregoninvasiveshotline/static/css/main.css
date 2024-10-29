@@ -1,10 +1,12 @@
 :root{
     --black: black;
     --inv-green: #577716;
-    --inv-orange: #DD8E19;
+    --inv-light-orange: #dd8f19a9;
+    --inv-orange: #dd8e19;
     --lightblue: lightblue;
+    --text-black: #050505;
     --white: white;
-
+    --border-gray: #999;
 }
 
 html, body {
@@ -131,9 +133,6 @@ select[multiple] {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding-top:10px;
-}
-
-.arrow {
 }
 
 #headline {
@@ -372,12 +371,6 @@ select[multiple] {
     font-weight:bold;
 }
 
-.reports-table-img {
-    width:1px;
-    vertical-align:middle !important;
-    text-align:center;
-}
-
 .reports-table-sort, .reports-table-subscribe {
     margin-top:10px;
 }
@@ -525,7 +518,6 @@ blockquote {
 
 .report-page .container-fluid {
     background-color:#fff;
-    border-top:5px solid #3a7a16;
 }
 
 .map-legend tbody>tr>td {
@@ -573,11 +565,12 @@ a.login-button, button.login-button {
 >>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
     border-radius: 20px;
     background-color: var(--inv-orange);
-    color: var(--white);
+    color: var(--text-black);
     font-size: 1em;
     margin: 0;
     padding: 5px 15px;
     float: right;
+    font-size: 12px;
 }
 
 div.login-button {
@@ -593,7 +586,7 @@ a.login-button:hover {
     border: 2px solid var(--inv-orange);
 >>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
     background-color: var(--white);
-    color: var(--inv-orange);
+    color: var(--text-black);
 }
 
 <<<<<<< HEAD
@@ -604,14 +597,18 @@ main#main{
 
 =======
 /* --- navigation bar --- */
-#navbar{
-    width: 1440px;
+#navbar, .navbar{
+    width: 100%;
     height: 48px;
     margin: 0;
     padding: 0;
     padding-top: 1px;
     background-color: var(--inv-green);
     border-color: var(--inv-green);
+}
+
+#navbar-small-screen {
+    display: none;
 }
 
 #navbar ul {
@@ -643,6 +640,7 @@ main#main{
     line-height: 45px;
     margin: 0;
     color: var(--white);
+    font-size: 1.2em;
 }
 
 .navbaranchor:hover {
@@ -704,3 +702,249 @@ footer p a:hover {
     font-weight: bold;
 }
 
+/* Reports Search Page */
+form.form-inline {
+    display: block;
+    float: left;
+    width: 500px;
+    height: 560px;
+}
+
+div#search-input-group{
+    display: block;
+    /* width: 620px; */
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    margin: 0;
+    float: left;
+}
+
+div#Search-Reports-Field {
+    display: inline-block;
+    width: 100%;
+}
+
+input#Search-Submit-Btn {
+    float: right;
+}
+
+label.search-box-label{
+    width: 100%;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+label.category-box-label, label.county-box-label {
+    font-size: 1.2em;
+    padding-top: 5px;
+}
+
+input#id_q {
+    border: 1px solid var(--border-gray);
+    border-radius: 5px;
+    width: 100%;
+    height: 32px;
+}
+
+div#Search-Submit-Button-div {
+    width: 100%;
+    height: 38px;
+    float: right;
+    margin-top: 20px;
+}
+
+div input.search-button {
+    display: inline-block;
+    font-size: 1em;
+    width: 100%;
+    height: 36px;
+    border: 2px solid var(--inv-orange);
+    border-radius: 15px;
+    background-color: var(--inv-orange);
+    color: var(--white);
+    margin-left: 15px;
+    text-align: center;
+}
+
+div#map-canvas {
+    display: block;
+    float: left;
+    margin-left: 5px;
+    margin-top: 40px;
+    /* clear: both; */
+    /* height: 336px;
+    width: 643px;*/
+    height: 230px;
+    width: 475px;
+}
+
+/* the actual reports listed pulled from database */
+table.reports-table-layout {
+    border: 1px dotted green;
+}
+
+div#Report-Zebra-Database-Listing {
+    padding: 10px;
+    margin-left: 15px;
+    display: block;
+    float: left;
+    /* clear: both; */
+    width: 600px;
+    height: 560px;
+}
+
+p.report-zebra-title {
+    width: 100%;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight:bold;
+}
+
+td.reports-table-img {
+    border: 1px solid green;
+}
+
+select#id_counties {
+    border: 3px solid red;
+}
+
+/* .select2-container--bootstrap {
+    border: 3px solid orange;
+} */
+
+/* Pagination */
+div.arrow-buttons-div {
+    display: inline-block;
+}
+
+div ul.pagination {
+    margin-top: 15px;
+    width: fit-content;
+    height: 36px;
+    border-radius: 20px;
+    float: left;
+}
+
+div ul.pagination div li.pagination-list-item {
+    display: inline-block;
+    width: fit-content;
+    height: 36px;
+}
+
+div ul.pagination div li.pagination-list-item a {
+    height: 36px;
+}
+
+div ul.pagination div li.pagination-list-item a span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+div.reports-page-arrows-div {
+    display: block;
+    width: 300px;
+    height: 36px;
+}
+
+li a.pagination-buttons {
+    display: block;
+    border: 2px solid var(--inv-orange);
+    background-color: var(--white);
+}
+
+li a.pagination-buttons:hover {
+    display: block;
+    border: 2px solid var(--inv-orange);
+    background-color: var(--inv-light-orange);
+}
+
+li#pagination-chevron-leftside {
+    width: fit-content;
+    height: 36px;
+}
+
+li#pagination-chevron-leftside a {
+    height: 36px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+li#pagination-chevron-rightside a {
+    height: 36px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+li#li-page-number-description {
+    display: inline-block;
+    border: 2px solid var(--inv-orange);
+    height: 36px;
+    margin: 0;
+}
+
+li#li-page-number-description p{
+    display: block;
+    height: 36px;
+    margin: 0;
+    padding-top: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: var(--inv-orange);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+span.orange-glyph-btn {
+    color: var(--inv-orange);
+    padding-top: 9px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+span.orange-glyph-btn-rightfix {
+    padding: 0;
+    padding-top: 9px;
+    padding-right: 8px;
+}
+
+span.orange-glyph-btn-leftfix {
+    padding: 0;
+    padding-top: 9px;
+    padding-left: 8px;
+}
+
+div#Pagination-Report-Page {
+    width: fit-content;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* The zebra list of reports on search reports page */
+div table.report-database-list {
+    border: 1px solid var(--inv-green);
+    width: 600px;
+}
+
+@media only screen and (max-width: 900px){
+    .login-button {
+        display: none;
+    }
+
+    #navbar {
+        display: none;
+    }
+
+    #navbar-small-screen {
+        display: block;
+    }
+
+    p.future-small-nav-para {
+        color: white;
+    }
+}

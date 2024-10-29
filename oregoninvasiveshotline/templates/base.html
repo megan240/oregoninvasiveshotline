@@ -74,33 +74,33 @@
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     {% if request.session.report_ids %}
                                         <li>
-                                            <a class="strong" href="{% url 'users-home' %}">My Reports</a>
+                                            <a class="strong" href="{% url 'users-home' %}" alt="My Reports">My Reports</a>
                                         </li>
                                     {% endif %}
                                     {% if user.is_staff %}
                                         <li>
-                                            <a href="{% url 'admin-panel' %}">Admin Panel</a>
+                                            <a href="{% url 'admin-panel' %}" alt="Admin Panel">Admin Panel</a>
                                         </li>
                                     {% elif user.is_active %}
                                         <li>
-                                            <a href="{% url 'species-list' %}">Species</a>
+                                            <a href="{% url 'species-list' %}" alt="Species">Species</a>
                                         </li>
                                     {% endif %}
 
                                     {% if user.is_active %}
                                         <li>
-                                            <a class="strong" href="{% url 'users-home' %}">My Account</a>
+                                            <a class="strong" href="{% url 'users-home' %}" alt="My Account">My Account</a>
                                         </li>
                                     {% endif %}
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="{% url 'logout' %}">Logout</a>
+                                        <a href="{% url 'logout' %}" alt="Logout">Logout</a>
                                     </li>
                                 </ul>
                             </div>
                         </div> 
                         {% else %}
-                            <a href="{% url 'login' %}" class="login-button">Login</a>
+                            <a href="{% url 'login' %}" class="login-button" alt="Login">Login</a>
                         {% endif %}
                     </div>
                     {% endblock %}
@@ -110,23 +110,22 @@
 =======
         </header>
 
-        <nav id="navbar">
+        <nav id="navbar" class="navbar">
             <ul>
                 <li>
-                    <a href="{% url 'home' %}" class="navbaranchor">Home</a>
+                    <a href="{% url 'home' %}" class="navbaranchor" alt="Home">Home</a>
                 </li>
                 <li>
-                    <a href="{% url 'reports-list' %}" class="navbaranchor">Search Reports</a>
+                    <a href="{% url 'reports-list' %}" class="navbaranchor" alt="Search Reports">Search Reports</a>
                 </li>
                 <li>
-                    <a href="/pages/learn/" class="navbaranchor">Learn About Invaders</a>
+                    <a href="/pages/learn/" class="navbaranchor" alt="Learn About Invaders">Learn About Invaders</a>
                 </li>
                 <li>
-                    <a href="{% url 'reports-create' %}" class="navbaranchor">Report Now</a>
+                    <a href="{% url 'reports-create' %}" class="navbaranchor" alt="Report Now">Report Now</a>
                 </li>
             </ul>
         </nav>
->>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
         
         <main id="main" class="{% block main_class %}container{% endblock %}">
             {% if messages %}
@@ -142,21 +141,21 @@
 
         <footer class="container text-center text-muted" id="footer">
             <div class="row" id="footer-sponsors">
-                <a href="http://pdx.edu">
+                <a href="http://pdx.edu" alt="Portland State University Website">
                     <img 
                         src="{% static 'img/PSU-transparent.png' %}"
                         alt="Portland State University School Logo Banner"
                         height="45"
                     >
                 </a>
-                <a href="http://www.cascadepacific.org/western-invasives-network">
+                <a href="http://www.cascadepacific.org/western-invasives-network" alt="Western Invasives Network Website">
                     <img 
                         src="{% static 'img/WIN-transparent.png' %}"
                         alt="Western Invasives Network Logo Banner"
                         height="65"
                     >
                 </a>
-                <a href="http://www.oregoninvasivespeciescouncil.org/">
+                <a href="http://www.oregoninvasivespeciescouncil.org/" alt="Oregon Invasives Species Council Website">
                     <img 
                         src="{% static 'img/OISC-transparent.png' %}"
                         alt="Oregon Invasive Species Council Logo Banner"
