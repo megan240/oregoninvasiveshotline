@@ -60,13 +60,20 @@ class ReportSearchForm(SearchForm):
         required=False,
         label='',
         choices=get_category_choices,
-        widget=forms.SelectMultiple(attrs={'title': 'Categories'})
+        widget=forms.SelectMultiple(attrs={
+            'title': 'Categories',
+            'style': 'width: 90%;',
+            'name': 'categories-form'
+        })
     )
     counties = forms.MultipleChoiceField(
         required=False,
         label='',
         choices=get_county_choices,
-        widget=forms.SelectMultiple(attrs={'title': 'Counties'})
+        widget=forms.SelectMultiple(attrs={
+            'title': 'Counties',
+            'name': 'counties-form'
+        })
     )
     is_archived = forms.ChoiceField(
         required=False,

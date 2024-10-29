@@ -2,46 +2,23 @@
 
 {% load static %}
 
-{% block title %}Report List{% endblock %}
+{% block title %}Search Reports{% endblock %}
 {% block css %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/select2-bootstrap.css' %}">
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/select2-bootstrap.css' %}">
 {% endblock %}
 {% block body_class %}report-page white{% endblock %}
 {% block main_class %}container-fluid{% endblock %}
 
 {% block content %}
-    <form class="form-inline">
-        <div class="row">
-            <div class="col-lg-7">
-              <span class="strong">Search</span><br/>
-              {% include 'reports/search/_fields.html' %}
-            </div>
-            <div class="col-lg-5">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <span class="strong">Counties</span>
-                    {{ form.counties }}
-                  </div>
-                  <div class="col-lg-6">
-                    <span class="strong">Categories</span>
-                    <a href="{% url 'reports-help' %}?modal=true"
-                       class="modal-remote help"
-                       title="Category legend">
-                      <span class="glyphicon glyphicon-question-sign"></span>
-                      <span class="sr-only">[?]</span>
-                    </a>
-                    {{ form.categories }}
-                  </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    {% include 'reports/_list.html' %}
+  <form class="form-inline">
+    {% include 'reports/search/_fields.html' %}
+  </form>
+  {% include 'reports/_list.html' %}
 {% endblock %}
 
 {% block js %}
-    {{ block.super }}
-    {% include 'reports/_list.js.html' %}
+  {{ block.super }}
+  {% include 'reports/_list.js.html' %}
 {% endblock %}
