@@ -27,7 +27,11 @@
     </head>
     <body id="body" class="{% block body_class %}{% endblock %}">
         {% block body %}
+<<<<<<< HEAD
+                <header id="header" class="container">
+=======
         <header id="header" class="container">
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
                     {% block header %}
                     <div class="row">
                         <div class="dropdown">
@@ -42,6 +46,18 @@
                         
                             {% if user.is_authenticated %}
                                 
+<<<<<<< HEAD
+                            <div class="login-button" >
+                                <button type="button"
+                                        class="login-button"
+                                        data-toggle="dropdown"
+                                        aria-expanded="true"
+                                        aria-haspopup="true">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    {{ user.get_short_name }}
+                                    <!-- The little caret signifying drop down menu -->
+                                    <span class="caret"></span>
+=======
                                 <div class="login-button" >
                                     <button type="button"
                                             class="login-button"
@@ -52,6 +68,7 @@
                                         {{ user.get_short_name }}
                                         <!-- The little caret signifying drop down menu -->
                                         <span class="caret"></span>
+>>>>>>> 7b6544a5e141317b6fc15b24d20100528e732f64
                                 </button>
 
                                 <ul class="dropdown-menu dropdown-menu-right">
@@ -87,6 +104,10 @@
                         {% endif %}
                     </div>
                     {% endblock %}
+<<<<<<< HEAD
+                </header>
+
+=======
         </header>
 
         <nav id="navbar" class="navbar">
@@ -104,10 +125,6 @@
                     <a href="{% url 'reports-create' %}" class="navbaranchor" alt="Report Now">Report Now</a>
                 </li>
             </ul>
-        </nav>
-
-        <nav id="navbar-small-screen" class="navbar">
-        <p class="future-small-nav-para"> --- Future Small Screen Menu/Login here --- </p>
         </nav>
         
         <main id="main" class="{% block main_class %}container{% endblock %}">
