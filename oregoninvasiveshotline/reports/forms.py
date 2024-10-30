@@ -8,6 +8,7 @@ from django import forms
 from oregoninvasiveshotline.utils.search import SearchForm
 from oregoninvasiveshotline.comments.models import Comment
 from oregoninvasiveshotline.counties.models import County
+from oregoninvasiveshotline.cities.models import City
 from oregoninvasiveshotline.species.models import Category, Severity, Species
 from oregoninvasiveshotline.users.models import User
 from oregoninvasiveshotline.reports.models import Invite, Report
@@ -31,6 +32,12 @@ def get_county_choices():
         county_choices.append((county.pk, county.label))
     return county_choices
 
+def get_city_choices():
+    city_choices = []
+    for city in City.objects.all().order_by('state', 'name'):
+        city_choices.append((city.pk, city.label))
+    return city_choices
+
 
 class ReportSearchForm(SearchForm):
     """
@@ -45,7 +52,7 @@ class ReportSearchForm(SearchForm):
     since that will break any :class:`UserNotificationQuery` rows that
     rely on that field.
     """
-    public_fields = ['q', 'order_by', 'source', 'categories', 'counties']
+    public_fields = ['q', 'order_by', 'source', 'categories', 'counties', 'cities']
 
     source = forms.ChoiceField(
         required=False,
@@ -67,6 +74,12 @@ class ReportSearchForm(SearchForm):
         label='',
         choices=get_county_choices,
         widget=forms.SelectMultiple(attrs={'title': 'Counties'})
+    )
+    cities = forms.MultipleChoiceField(
+        required=False,
+        label='',
+        choices=get_city_choices,
+        widget=forms.SelectMultiple(attrs={'title': 'Cities'})
     )
     is_archived = forms.ChoiceField(
         required=False,
@@ -107,6 +120,7 @@ class ReportSearchForm(SearchForm):
     def get_search_fields(self):
         return (
             'county__name',
+            'city__name',
             'reported_category__name',
             'reported_species__name',
             'reported_species__scientific_name',
@@ -153,6 +167,10 @@ class ReportSearchForm(SearchForm):
         if self.cleaned_data.get('counties'):
             reports = reports.filter(
                 county__in=self.cleaned_data.get('counties')
+            )
+        if self.cleaned_data.get('cities'):
+            reports = reports.filter(
+                city__in=self.cleaned_data.get('cities')
             )
         if self.cleaned_data.get('categories'):
             reports = reports.filter(
@@ -290,6 +308,7 @@ class ReportForm(forms.ModelForm):
 
         report.created_by = user
         report.county = County.objects.filter(the_geom__intersects=report.point).first()
+        report.city = City.objects.filter(the_geom__intersects=report.point).first()
 
         super().save(*args, **kwargs)
 
