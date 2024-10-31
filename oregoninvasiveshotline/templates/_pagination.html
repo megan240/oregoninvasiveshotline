@@ -1,58 +1,65 @@
-<div class="text-center">
+<div class="reports-page-arrows-div">
     <ul class="pagination" style="margin: 0;">
-        <li {% if not items.has_previous %}class="disabled"{% endif %}>
-            <a title="First page" aria-label="First page"
+        <div class="arrow-buttons-div">
+        <li id="pagination-chevron-leftside" class="pagination-list-item" {% if not items.has_previous %}class="disabled pagination-list-item"{% endif %}>
+            <a class="pagination-buttons" title="First page" aria-label="First page"
                {% if items.has_previous %}
                    href="{% add_get page=1 %}"
                {% else %}
                    href="#"
-               {% endif %}>
+               {% endif %}
+               >
                 {# This long line avoids a space between the two chevron arrows #}
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-chevron-left orange-glyph-btn orange-glyph-btn-leftfix" aria-hidden="true"></span><span class="glyphicon glyphicon-chevron-left orange-glyph-btn" aria-hidden="true"></span>
                 <span class="sr-only">First page</span>
             </a>
         </li>
 
-        <li {% if not items.has_previous %}class="disabled"{% endif %}>
-            <a title="Previous page" aria-label="Previous page"
+        <li id="pagination-chevron-middle-left" class="pagination-list-item" {% if not items.has_previous %}class="disabled pagination-list-item"{% endif %}>
+            <a class="pagination-buttons" title="Previous page" aria-label="Previous page"
                {% if items.has_previous %}
                    href="{% add_get page=items.previous_page_number %}"
                {% else %}
                    href="#"
                {% endif %}>
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-chevron-left orange-glyph-btn" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
         </li>
-
-        <li {% if not items.has_next %}class="disabled"{% endif %}>
-            <a title="Next page" aria-label="Next page"
+        </div>
+        <div class="arrow-buttons-div">
+        <li id="li-page-number-description" class="pagination-list-item">
+            <p>
+            {% if items.number %}
+                Page {{ items.number }}
+            {% endif %}</p>
+        </li>
+        </div> 
+        <div class="arrow-buttons-div">
+        <li id="pagination-chevron-middle-right" class="pagination-list-item" {% if not items.has_next %}class="disabled pagination-list item"{% endif %}>
+            <a class="pagination-buttons" title="Next page" aria-label="Next page"
                {% if items.has_next %}
                    href="{% add_get page=items.next_page_number %}"
                {% else %}
                    href="#"
                {% endif %}>
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-chevron-right orange-glyph-btn" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
         </li>
 
-        <li {% if not items.has_next %}class="disabled"{% endif %}>
-            <a title="Last page" aria-label="Last page"
+        <li id="pagination-chevron-rightside" class="pagination-list-item" {% if not items.has_next %}class="disabled pagination-list-item"{% endif %}>
+            <a class="pagination-buttons" title="Last page" aria-label="Last page"
                {% if items.has_next %}
                    href="{% add_get page=items.paginator.num_pages %}"
                {% else %}
                    href="#"
                {% endif %}>
                 {# This long line avoids a space between the two chevron arrows #}
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-chevron-right orange-glyph-btn" aria-hidden="true"></span><span class="glyphicon glyphicon-chevron-right orange-glyph-btn orange-glyph-btn-rightfix" aria-hidden="true"></span>
                 <span class="sr-only">Last page</span>
             </a>
         </li>
+        </div>
     </ul>
-    <div>
-        {% if items.number %}
-            Page {{ items.number }} of {{ items.paginator.num_pages }}
-        {% endif %}
-    </div>
 </div>

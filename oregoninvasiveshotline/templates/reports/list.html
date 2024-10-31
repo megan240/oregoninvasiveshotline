@@ -14,55 +14,30 @@
 
 {% block content %}
     {% include 'nav_tabs.html' with tab=tab %}
-
     <div class="tab-content">
         <div class="tab-pane active" id="{{ tab }}">
-            <form class="form-inline">
-                <div class="row">
-                    <div class="col-lg-7">
-                      <span class="strong">Search</span><br/>
-                      {% include 'reports/search/_fields.html' %}
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="row">
-                          <div class="col-lg-4">
-                            <span class="strong">Counties</span>
-                            {{ form.counties }}
-                          </div>
-                          <div class="col-lg-4">
-                            <span class="strong">Cities</span>
-                            {{ form.cities }}
-                          </div>
-                          <div class="col-lg-4">
-                            <span class="strong">Categories</span>
-                            <a href="{% url 'reports-help' %}?modal=true"
-                               class="modal-remote help"
-                               title="Category legend">
-                              <span class="glyphicon glyphicon-question-sign"></span>
-                              <span class="sr-only">[?]</span>
-                            </a>
-                            {{ form.categories }}
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-offset-7 col-lg-5" style="padding-top: 1em;">
-                        <span class="strong">Filters</span><br/>
-                        {{ form.claimed_by|bootstrap }}
-                        {{ form.is_public|bootstrap }}
-                        {{ form.is_archived|bootstrap }}
-                        {% if form.source %}{{ form.source|bootstrap }}{% endif %}
-                    </div>
-                </div>
-                <div class="row">
-                  {{ form.non_field_errors }}
-                </div>
+            <form class="form-inline"> 
+              <!-- <div class="col-lg-offset-7 col-lg-5" style="padding-top: 1em;"> -->
+              <div>
+                <span class="strong">Filters</span><br/>
+                {{ form.claimed_by|bootstrap }}
+                {{ form.is_public|bootstrap }}
+                {{ form.is_archived|bootstrap }}
+                {% if form.source %}{{ form.source|bootstrap }}{% endif %}
+              </div>    
+              {% include 'reports/search/_fields.html' %}
+              <!-- <div class="row"> -->
+              <!-- </div> -->
+              <div class="row">
+                {{ form.non_field_errors }}
+              </div>
             </form>
             {% include 'reports/_list.html' %}
         </div>
     </div>
 {% endblock %}
+
+
 
 {% block js %}
     {{ block.super }}

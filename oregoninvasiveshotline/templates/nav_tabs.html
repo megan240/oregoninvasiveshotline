@@ -1,22 +1,22 @@
 <ul class="nav nav-tabs" id="tabs">
-  <li {% if tab == None %}class="active"{% endif %}><a class="#home" href="{% url 'users-home' %}">Home</a></li>
-  <li {% if tab == "search" %}class="active"{% endif %}><a href="{% url 'reports-list' %}">Search</a></li>
+  <li {% if tab == None %}class="active"{% endif %}><a class="#home" href="{% url 'users-home' %}">Hhome</a></li>
+  <li {% if tab == "search" %}class="active"{% endif %}><a href="{% url 'reports-list' %}">Ssearch</a></li>
     {% if invited_to %}
-        <li {% if tab == "invited_to" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&source=invited&tabs=invited_to">Invited To ({{ invited_to }})</a></li>
+        <li {% if tab == "invited_to" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&source=invited&tabs=invited_to">Iinvited To ({{ invited_to }})</a></li>
     {% endif %}
     {% if reported %}
-        <li {% if tab == "reported" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&source=reported&tabs=reported">Reported ({{ reported }})</a></li>
+        <li {% if tab == "reported" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&source=reported&tabs=reported">Rreported ({{ reported }})</a></li>
     {% endif %}
     {% if open_and_claimed %}
-        <li {% if tab == "open_and_claimed" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&is_public=notpublic&is_archived=notarchived&claimed_by=me&tabs=open_and_claimed">Open and Claimed ({{ open_and_claimed }})</a></li>
+        <li {% if tab == "open_and_claimed" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&is_public=notpublic&is_archived=notarchived&claimed_by=me&tabs=open_and_claimed">Oopen and Claimed ({{ open_and_claimed }})</a></li>
     {% endif %}
     {% if claimed_by_me %}
-        <li {% if tab == "claimed_by_me" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&claimed_by=me&tabs=claimed_by_me">Claimed by Me ({{ claimed_by_me }})</a></li>
+        <li {% if tab == "claimed_by_me" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&claimed_by=me&tabs=claimed_by_me">Cclaimed by Me ({{ claimed_by_me }})</a></li>
     {% endif %}
     {% if unclaimed_reports %}
-        <li {% if tab == "unclaimed_reports" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&is_public=notpublic&is_archived=notarchived&claimed_by=nobody&tabs=unclaimed_reports">Unclaimed ({{ unclaimed_reports }})</a></li>
+        <li {% if tab == "unclaimed_reports" %}class="active"{% endif %}><a href="{% url 'reports-list' %}?order_by=-created_on&is_public=notpublic&is_archived=notarchived&claimed_by=nobody&tabs=unclaimed_reports">Uunclaimed ({{ unclaimed_reports }})</a></li>
     {% endif %}
     {% if subscribed %}
-    <li {% if tab == "subscribed" %}class="active"{% endif %}><a href="{% url 'notifications-list' %}">Subscribed ({{ subscribed }})</a></li>
+    <li {% if tab == "subscribed" %}class="active"{% endif %}><a href="{% url 'notifications-list' %}">Ssubscribed ({{ subscribed }})</a></li>
     {% endif %}
 </ul>
