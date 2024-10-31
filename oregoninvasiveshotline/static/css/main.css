@@ -662,3 +662,22 @@ footer p a:visited {
 footer p a:hover {
     font-weight: bold;
 }
+
+/* ...existing code... */
+
+.same-height {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Ensure all cards have the same height */
+.row.w-100 {
+    display: flex;
+}
+
+.row.w-100 > .col-md-4 {
+    display: flex;
+    flex-direction: column;
+}
