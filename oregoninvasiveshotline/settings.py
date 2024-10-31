@@ -138,6 +138,7 @@ INSTALLED_APPS = [
     "oregoninvasiveshotline.permissions",
     "oregoninvasiveshotline.comments",
     "oregoninvasiveshotline.counties",
+    "oregoninvasiveshotline.cities",
     "oregoninvasiveshotline.images",
     "oregoninvasiveshotline.notifications",
     "oregoninvasiveshotline.pages",
