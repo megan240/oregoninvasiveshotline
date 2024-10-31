@@ -3,6 +3,7 @@ from django.http import QueryDict
 
 from oregoninvasiveshotline.species.models import Category
 from oregoninvasiveshotline.counties.models import County
+from oregoninvasiveshotline.cities.models import City
 
 
 class UserNotificationQuery(models.Model):
@@ -44,6 +45,10 @@ class UserNotificationQuery(models.Model):
             counties = County.objects.filter(pk__in=query.getlist('counties'))
             counties = counties.values_list('name', flat=True).order_by('name')
             query_items['Counties'] = ", ".join(counties)
+        if query.get('cities'):
+            cities = City.objects.filter(pk__in=query.getlist('cities'))
+            cities = cities.values_list('name', flat=True).order_by('name')
+            query_items['Cities'] = ", ".join(cities)
         if query.get('q'):
             query_items['Keyword'] = query['q']
         return query_items

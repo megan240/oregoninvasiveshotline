@@ -78,6 +78,9 @@
                     <tr class="{{ report.css_class }}">
                         <td>
                             {{ report.county|default:'Not in OR/WA' }}
+                            {% if report.city %}
+                                , {{ report.city }}
+                            {% endif %}
                         </td>
                         <td class="text-right">
                           <em title="Early Detection and Rapid Response">EDRR Status:</em>
