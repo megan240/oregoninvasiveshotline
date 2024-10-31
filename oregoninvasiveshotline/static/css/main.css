@@ -3,7 +3,9 @@
     --inv-green: #577716;
     --inv-light-orange: #dd8f19a9;
     --inv-orange: #dd8e19;
+    --italicblue: steelblue;
     --lightblue: lightblue;
+    --lightgray: #c7c3c3;
     --text-black: #050505;
     --white: white;
     --border-gray: #999;
@@ -760,6 +762,107 @@ div#map-canvas {
 }
 
 /* the actual reports listed pulled from database */
+div#Listing-Box-Container {
+    border: 2px solid var(--inv-green);
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 800px;
+    height: 475px;
+}
+
+table {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+    background-color:beige;
+}
+
+tbody {
+    border: 2px solid var(--inv-green);
+    border-radius: 5px;
+}
+
+tr {
+    padding: 0;
+    height: 18px;
+    border-radius: 5px;
+}
+
+td {
+    height: 18px;
+    width: 160px;
+    padding: 0;
+}
+
+td.img-cell-table{
+    width: 120px;
+}
+
+td.img-cell-table a{
+    display: block;
+    width: 75px;
+    height: 70px;
+    border: 1px solid black;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+td.species-title-cell-table h2 {
+    font-size: 20px;
+    font-style: bold;
+    margin: 0;
+    margin-left: 10px;
+    color: var(--inv-green);
+    padding: 5px;
+}
+
+td.category-cell-data, td.county-cell-data {
+    padding: 0;
+}
+
+td p.category-cell-table-label, td p.county-cell-table-label {
+    display: inline;
+    font-size: 12px;
+    margin: 0;
+    margin-left: 10%;
+    color: var(--black);
+    padding: 4px;
+}
+
+p.county-cell-data, p.category-cell-data {
+    display: inline;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--italicblue);
+    padding: 0;
+}
+
+td.report-data-cell-table, td.publish-date-cell-table {
+    padding: 0;
+    margin: 0;
+}
+
+td.report-data-cell-table p:first-child {
+    display: inline;
+    float: right;
+    font-size: 12px;
+    margin-left: 30px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+td.publish-date-cell-table p:last-child{
+    display: inline;
+    float: right;
+    font-size: 12px;
+    padding: 0;
+    color: var(--lightgray);
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
 table.reports-table-layout {
     border: 1px dotted green;
 }
