@@ -12,6 +12,7 @@ class ReportSerializer(serializers.Serializer):
     category = serializers.CharField()
     content = serializers.SerializerMethodField()
     county = serializers.CharField()
+    city = serializers.CharField()
 
     # encountered error with translation of datetime object in production
     # the given value was an unaware datetime with values which do not
