@@ -6,69 +6,57 @@
     </div>
     <div class="col-md-5 {% if not reports %}hidden{% endif %}">
         <!-- <table class="table reports-table report-database-list double-zebra "> -->
-        <table class="reports-table-layout">    
-            <tbody>
-                {% for report in reports %}
-                    <tr class="{{ report.css_class }}">
-                        <td class="reports-table-img" rowspan="2">
+        
+        <div>
+            {% if items.number %}
+                Page {{ items.number }} of {{ items.paginator.num_pages }}
+            {% endif %}
+        </div>
+    </div>
+    <div id="Listing-Box-Container">
+        
+        {% for report in reports %}
+        <div class="listing-report-template">
+            <table>
+                <tbody>
+                    <tr class="top-tr-left top-tr-right">
+                        <td class="img-cell-table" rowspan="4" colspan="1">
+                            <!-- picture -->
                             <a href="#map-canvas" class="report-location-click" data-report-index="{{ forloop.counter0 }}">
-                                <img 
+                                    <img 
                                     src="{{ report.image_url|default:report.icon_url }}"
                                     alt="Picture of {{report.title}}"
                                     width="70"
                                     height="70">
                             </a>
                         </td>
-                        <!-- <td colspan="2" style="vertical-align: bottom; width: 100%;"> -->
-                        <td colspan="2">
-                            <a class="strong" href="{% url 'reports-detail' report.pk %}">
-                                <small>#{{ report.pk }}:</small>
-                                {{ report.species|default:report.category }}
+                        <td class="species-title-cell-table top-tr-right" rowspan="1" colspan="3">
+                            <h2>{{ report.species|default:report.category }}</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="category-cell-data" rowspan="1" colspan="3">
+                            <p class="category-cell-table-label">category:</p>
+                            <p class="category-cell-data">{{ report.category }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="county-cell-data" rowspan="1" colspan="3">
+                            <p class="county-cell-table-label">county      :</p>
+                            <p class="county-cell-data">{{ report.county|default:'Not in OR/WA' }}</p>
+                        </td>
+                    </tr>
+                    <tr class="bottom-tr-left bottom-tr-right">
+                        <td class="report-data-cell-table publish-date-cell-table" rowspan="1" colspan="3">
+                            <a href="{% url 'reports-detail' report.pk %}">
+                                <p>report: #{{ report.pk }}</p>
                             </a>
-                            {% if report.species %}
-                                <small>({{ report.category }})</small>
-                            {% endif %}
-                            &mdash; {{ report.created_on }}
-                            {% if user.is_active %}
-                                <span class="pull-right">
-                                    {% if report.is_public %}
-                                        <span title="Public" class="glyphicon glyphicon-eye-open"></span>
-                                    {% endif %}
-                                    {% if report.actual_species %}
-                                        <span title="Confirmed" class="glyphicon glyphicon-ok"></span>
-                                    {% endif %}
-                                    {% if report.is_archived %}
-                                        <span title="Archived" class="glyphicon glyphicon-oil"></span>
-                                    {% endif %}
-                                    {% if report.claimed_by_id %}
-                                        <span title="Claimed by {{ report.claimed_by }}"
-                                              class="glyphicon glyphicon-user {% if report.claimed_by_id == request.user.pk %}text-info strong{% endif %}">
-                                        </span>
-                                    {% endif %}
-                                </span>
-                            {% endif %}
+                            <p>publish date - {{ report.created_on }}</p>
                         </td>
                     </tr>
-                    <tr class="{{ report.css_class }}">
-                        <td>
-                            {{ report.county|default:'Not in OR/WA' }}
-                        </td>
-                        <td class="text-right">
-                          <em title="Early Detection and Rapid Response">EDRR Status:</em>
-                          {% if report.edrr_status %}
-                            {{ report.edrr_status }}
-                          {% else %}
-                            &mdash;
-                          {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div>
-            {% if items.number %}
-                Page {{ items.number }} of {{ items.paginator.num_pages }}
-            {% endif %}
+                </tbody>
+            </table>
         </div>
+        {% endfor %}
     </div>
 </div>
