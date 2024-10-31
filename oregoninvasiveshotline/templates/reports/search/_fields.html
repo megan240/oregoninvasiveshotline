@@ -9,6 +9,12 @@
     />
   </div>
   <label for="categories-form" class="category-box-label">Categories</label>
+  <a href="{% url 'reports-help' %}?modal=true"
+    class="modal-remote help"
+    title="Category legend">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    <span class="sr-only">[?]</span>
+  </a>
   {{form.categories}}
   <label for="counties-form" class="county-box-label">Counties</label>
   {{form.counties}}
