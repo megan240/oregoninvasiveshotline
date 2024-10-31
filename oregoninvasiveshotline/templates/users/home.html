@@ -1,60 +1,55 @@
 {% extends "base.html" %}
-{% block title %}
-Account Home
-{% endblock %}
 {% block content %}
-{% include "nav_tabs.html" with active="home" %}
-<div class="tab-content">
-    <div class="tab-pane active">
-        <div class="row">
-            {% if user.pk %}
-                <div id="avatar_box" class="col-md-4">
-                    <div id="avatar-image">
-                        <img src="{{ user.get_avatar_url }}" />
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <a class="pull-left" href="{% url 'users-edit' user.pk %}">Edit Profile</a>
-                            {% if user.is_active %}
-                                <a class="pull-right" href="{% url 'password_change' %}">Change Password</a>
-                            {% endif %}
+<div class="container mt-5" style="background-color: #ffffff;">
+    <div class="row">
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <!-- Profile Card -->
+            <div class="card border border-light mb-3">
+                <div class="card-body text-center">
+                    <a href="/users/avatar/{{ user.pk }}"><img src="{{ user.get_avatar_url|default:'/static/img/avatar_placeholder.png' }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3" width="150"></a>
+                    <h3 class="card-title">Hello, {{ user.username|default:"Guest" }}</h3>
+                    <p class="card-text">{{ user.biography|default:"You haven't entered a biography or any affiliations yet." }}</p>
+                    <a href="{% url 'users-edit' user.pk %}" class="btn btn-outline-primary">Edit Profile</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Name Card -->
+                <div class="col-md-4 mb-3">
+                    <div class="card border border-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Name</h5>
+                            <p>First: {{ user.first_name|default:"First" }}</p>
+                            <p>Last: {{ user.last_name|default:"Last" }}</p>
+                            <button class="btn btn-outline-secondary">Edit Name</button>
                         </div>
-                        <table class="table">
-                            {% if user.is_active %}
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{{ user.email }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Manager</th>
-                                    <td>{{ user.is_active }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Admin</th>
-                                    <td>{{ user.is_staff }}</td>
-                                </tr>
-                            {% endif %}
-                            <tr>
-                                <th>Joined</th>
-                                <td>{{ user.date_joined|date:"E d, Y" }}</td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
-            {% endif %}
-
-            <div class="col-md-8">
-                <h3>Hello, {{ user.full_name }}</h3>
-                <p>Use the tabs above to find specific reports.</p>
-                {% if user.biography %}
-                    <p><strong>Biography:</strong> {{ user.biography|linebreaksbr }}</p>
-                {% endif %}
-                {% if user.affiliations %}
-                    <p><strong>Affiliations:</strong> {{ user.affiliations|linebreaksbr }}</p>
-                {% endif %}
-                {% if user.is_active and not user.affiliations and not user.biography %}
-                    <div class="alert alert-warning">You haven't entered a biography or any affiliations. Go to your <a href="{% url 'users-edit' user.pk %}">Edit Profile</a> page to add them.</div>
-                {% endif %}
+                <!-- Email and Password Card -->
+                <div class="col-md-4 mb-3">
+                    <div class="card border border-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Email & Password</h5>
+                            <p>Email: {{ user.email }}</p>
+                            <p>Password: ********</p>
+                            <a href="/users/edit/5210" class="btn btn-sm btn-outline-secondary mb-2">Edit Email</a>
+                            <a href="/password_change/" class="btn btn-sm btn-outline-secondary">Edit Password</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager/Admin Card -->
+                <div class="col-md-4 mb-3">
+                    <div class="card border border-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">User Role</h5>
+                            <p>Manager: <img src="{% if user.is_active %}/static/img/check-box.png{% else %}/static/img/empty-box.png{% endif %}" alt="Manager Status" style="width: 20px; height: 20px;"></p>
+                            <p>Admin: <img src="{% if user.is_staff %}/static/img/check-box.png{% else %}/static/img/empty-box.png{% endif %}" alt="Admin Status" style="width: 20px; height: 20px;"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
