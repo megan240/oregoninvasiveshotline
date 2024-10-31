@@ -22,7 +22,7 @@ services:
       - POSTGRES_PASSWORD=invasives
       - POSTGRES_DB=invasives
     volumes:
-      #- ${VOLUME_PATH}/postgres/11/main:/var/lib/postgresql/data
+      # - ${VOLUME_PATH}/postgres/11/main:/var/lib/postgresql/data
       - ${VOLUME_PATH}/dumps:/archive
 
   rabbitmq:
@@ -30,7 +30,7 @@ services:
     networks:
       - default
     volumes:
-      - ${VOLUME_PATH}/rabbitmq:/var/lib/rabbitmq/mnesia      # Adjusted Path for Windows compatibility KEEP IN MIND.
+      - ${VOLUME_PATH}/rabbitmq:/var/lib/rabbitmq
     # override hostname to prevent reinitialization of data
     # on container delete/init cycle.
     #   Refs: https://github.com/docker-library/rabbitmq/issues/106#issuecomment-241882358
