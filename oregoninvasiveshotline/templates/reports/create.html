@@ -50,11 +50,19 @@ Report an Invader
             </input>
           </div>
         </p>
+    
         {% if form.point.errors %}
             <div class="alert alert-danger">
-                Please drag the pin to the location where the specimen was found.
+                {% for error in form.point.errors %}
+                    {% if "outside Oregon" in error %}
+                        The location you selected is outside Oregon. Please place the pin within Oregon.
+                    {% else %}
+                        Please drag the pin to the location where the specimen was found.
+                    {% endif %}
+                {% endfor %}
             </div>
         {% endif %}
+    
         {{ form.point }}
         <div id="map-canvas" class="scroll-space-on-mobile" style="height:500px"></div>
         <br />
