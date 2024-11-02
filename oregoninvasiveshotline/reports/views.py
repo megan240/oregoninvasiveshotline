@@ -7,7 +7,7 @@ import csv
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse
 from django.db.models import Q
@@ -157,18 +157,21 @@ def create(request):
         form = ReportForm(request.POST, request.FILES)
         formset = ImageFormSet(request.POST, request.FILES, queryset=Image.objects.none())
         if form.is_valid() and formset.is_valid():
-            report = form.save()
-            formset.save(user=report.created_by, fk=report)
-            messages.success(request, "Report submitted successfully")
-            request.session.setdefault("report_ids", []).append(report.pk)
-            request.session.modified = True
-            response = redirect("reports-detail", report.pk)
-            # the template sets some cookies in JS that we want to clear when
-            # the report is submitted. This means the next time they go to this
-            # page, the map will be initialized with the defaults
-            response.delete_cookie("center", request.get_full_path())
-            response.delete_cookie("zoom", request.get_full_path())
-            return response
+            try:
+                report = form.save()
+                formset.save(user=report.created_by, fk=report)
+                messages.success(request, "Report submitted successfully")
+                request.session.setdefault("report_ids", []).append(report.pk)
+                request.session.modified = True
+                response = redirect("reports-detail", report.pk)
+                # the template sets some cookies in JS that we want to clear when
+                # the report is submitted. This means the next time they go to this
+                # page, the map will be initialized with the defaults
+                response.delete_cookie("center", request.get_full_path())
+                response.delete_cookie("zoom", request.get_full_path())
+                return response
+            except ValidationError as e:
+                form.add_error(None, e.message)
     else:
         formset = ImageFormSet(queryset=Image.objects.none())
         form = ReportForm()

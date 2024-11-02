@@ -42,6 +42,11 @@ Report an Invader
     <fieldset>
         <legend>Location</legend>
         <p>Drag the pin where you found the specimen (zoom in to provide the most accurate location) or enter an address or nearby intersection below:</p>
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
         <p>
           <div class="form-group address">
             <label>Address</label>
