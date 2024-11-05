@@ -22,7 +22,7 @@ services:
       - POSTGRES_PASSWORD=invasives
       - POSTGRES_DB=invasives
     volumes:
-      # - ${VOLUME_PATH}/postgres/11/main:/var/lib/postgresql/data
+      - ${VOLUME_PATH}/postgres/11/main:/var/lib/postgresql/data
       - ${VOLUME_PATH}/dumps:/archive
 
   rabbitmq:
