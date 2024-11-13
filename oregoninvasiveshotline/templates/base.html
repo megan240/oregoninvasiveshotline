@@ -108,6 +108,36 @@
                 </li>
             </ul>
         </nav>
+        
+        <header id="small-screen-header">
+            <div id="small-nav-bar-div" class="small-nav-bar-div">
+                <button id="navbar-toggler" type="button">
+                  <img
+                    src="static/img/menu-burger-horizontal-svgrepo-com.png"
+                    alt="hamburger menu icon"
+                    srcset="static/img/menu-burger-horizontal-svgrepo-com.svg"
+                    width="30"
+                    height="30"
+                  />
+                </button>
+            </div>
+            <nav id="small-nav-bar" class="collapsed-block">
+                <ul>
+                    <li class="navbaranchor nav-list-item sm-nav-list-item">
+                        <a href="{% url 'home' %}">Homepage</a>
+                    </li>
+                    <li class="navbaranchor nav-list-item sm-nav-list-item">
+                        <a href="{% url 'reports-list' %}">Search Reports</a>
+                    </li>
+                    <li class="navbaranchor nav-list-item sm-nav-list-item">
+                        <a href="/pages/learn/">Learn About Invaders</a>
+                    </li>
+                    <li class="navbaranchor nav-list-item sm-nav-list-item">
+                        <a href="{% url 'reports-create' %}">Report now</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
         <!-- Side Menu Implementation - Layered Above Content, Positioned Below Navbar -->
         <div id="side-menu" class="side-menu-container" style="position: fixed; top: 0; left: 0; height: 100%; width: 250px; background-color: #ffffff; z-index: 1050; overflow-y: auto; box-shadow: 2px 0 5px rgba(0,0,0,0.1); display: none;">
@@ -180,7 +210,7 @@
         <!-- Overlay to Dim the Background When Side Menu is Open -->
         <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1040; display: none;"></div>
 
-        <main id="main" class="{% block main_class %}container{% endblock %}" style="margin-left: 0;">
+        <main id="main" class="{% block main_class %}container{% endblock %} uncollapsed-block" style="margin-left: 0;">
             {% if messages %}
                 {% for message in messages %}
                     <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
