@@ -258,8 +258,7 @@ class ReportForm(forms.ModelForm):
         required=False,
         widget=forms.Textarea,
         label=(
-            'Do you have additional questions for the invasive species expert who will review '
-            'this report?'
+            'Do you have  any additional questions?'
         ),
     )
 
@@ -274,7 +273,13 @@ class ReportForm(forms.ModelForm):
             'has_specimen',
         ]
         widgets = {
-            'point': forms.widgets.HiddenInput
+            'point': forms.widgets.HiddenInput,
+            'location': forms.Textarea(attrs={
+                'class': 'form-control',
+                'style': 'resize: auto; overflow: hidden;',
+                'rows': 3,  
+                'placeholder': 'Example: name the road, trail or specific landmarks near the site whether the species was found. Describe the geographic location, such as in a ditch, on a hillside or in a streambed. Enter GPS coordinates HERE.'
+            }),
         }
 
     def __init__(self, *args, **kwargs):
