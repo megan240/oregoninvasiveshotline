@@ -118,51 +118,5 @@
         </div>
     </div>
 </div>
-<!--Pain do not touch-->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const passwordChangeForm = document.getElementById('passwordChangeForm');
-    passwordChangeForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(passwordChangeForm);
-        fetch(passwordChangeForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-            },
-        })
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const newForm = doc.querySelector('#passwordChangeForm');
-            passwordChangeForm.innerHTML = newForm.innerHTML;
-        })
-        .catch(error => console.error('Error:', error));
-    });
-
-    const emailChangeForm = document.getElementById('emailChangeForm');
-    emailChangeForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(emailChangeForm);
-        fetch(emailChangeForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-            },
-        })
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const newForm = doc.querySelector('#emailChangeForm');
-            emailChangeForm.innerHTML = newForm.innerHTML;
-        })
-        .catch(error => console.error('Error:', error));
-    });
-});
-</script>
 
 {% endblock %}
