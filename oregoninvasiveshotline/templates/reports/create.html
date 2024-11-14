@@ -7,81 +7,144 @@
 Report an Invader
 {% endblock %}
 {% block content %}
-<h3>Report an Invader</h3>
+<style>
+.btn-submit {
+    background-color: #20601a;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px; 
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    display: inline-block; 
+    text-align: center;
+}
 
-<p>Use this form to report a potential invasive species you've found in Oregon or to request help in identifying an unknown species. The information you provide will assist invasive species experts in positively identifying your find. Please try to be as complete and detailed as possible.</p>
+.btn-submit:hover {
+    background-color: #34912b;
+    transform: scale(1.05); 
+}
 
-<p class="alert alert-warning">Please note, the descriptive information in your report may become viewable by the public. Contact information will only be visible to you and Hotline managers, it will not be made public</p>
+.btn-submit:active {
+    transform: scale(1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+.btn-cancel {
+    background-color: #ffae4a; 
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px; 
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    display: inline-block;
+    text-align: center;
+    margin-left: 10px;
+}
 
-<p><em>* indicates the field is required</em></p>
-<form method="post" enctype="multipart/form-data" id="reports-form">
-    {% if form.errors or formset.errors %}
-        <div class="alert alert-danger">
-            Please correct the errors below.
-        </div>
-    {% endif %}
-    {% csrf_token %}
-    <fieldset>
-        <legend>Your Contact Info</legend>
-        <div class="row">
-            <div class="col-md-4">
-                {{ form.first_name|bootstrap }}
-            </div>
-            <div class="col-md-4">
-                {{ form.last_name|bootstrap }}
-            </div>
-            <div class="col-md-4">
-                {{ form.phone|bootstrap }}
-            </div>
-        </div>
-        {{ form.email|bootstrap }}
-        {{ form.has_completed_ofpd|bootstrap }}
-    </fieldset>
+.btn-cancel:hover {
+    background-color: #ffc074; 
+    transform: scale(1.05); 
+}
 
+.btn-cancel:active {
+    transform: scale(1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+.form-container {
+    max-width: 2800px; /* Set a max width for the form */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    width: 100%;
+}
+</style>
+<div class="form-container">
+    <h3>Report an Invader Form</h3>
 
-    <fieldset>
-        <legend>Location</legend>
-        <p>Drag the pin where you found the specimen (zoom in to provide the most accurate location) or enter an address or nearby intersection below:</p>
-        <p>
-          <div class="form-group address">
-            <label>Address</label>
-            <input class="form-control" type="text" id="address">
-              <span style="display:none" class="loader"></span>
-            </input>
-          </div>
-        </p>
-        {% if form.point.errors %}
+    <div class="alert" style="background-color: rgb(231, 255, 212);">
+        <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span>
+        Please note, the descriptive in your report may become viewable by the public. Contact information will only be visible to you and Hot-line Managers, IT WIILL NOT be made public
+    </div>
+    
+    <p><em>* indicates the field is required</em></p>
+    <form method="post" enctype="multipart/form-data" id="reports-form">
+        {% if form.errors or formset.errors %}
             <div class="alert alert-danger">
-                Please drag the pin to the location where the specimen was found.
+                Please correct the errors below.
             </div>
         {% endif %}
-        {{ form.point }}
-        <div id="map-canvas" class="scroll-space-on-mobile" style="height:500px"></div>
-        <br />
-        {{ form.location|bootstrap }}
-    </fieldset>
+        {% csrf_token %}
+    
+        <div class="row">
+            <fieldset class="col-md-5">  
+                    <legend>Your Contact Info</legend>
+                    {{ form.first_name|bootstrap }}
+                    <br>
+                    {{ form.last_name|bootstrap }}
+                    <br>
+                    {{ form.phone|bootstrap }}
+                    <br>
+                    {{ form.email|bootstrap }}
+                    <br>
+                    {{ form.has_completed_ofpd|bootstrap }}
+                
+            </fieldset>
+            <fieldset class="col-md-7">
+                <legend>Location</legend>
+                <p>Drag the pin where you found the specimen (zoom in to provide the most accurate location) or enter an address or nearby intersection below:</p>
+                <p>
+                <div class="form-group address">
+                    <label>Address</label>
+                    <input class="form-control" type="text" id="address">
+                    <span style="display:none" class="loader"></span>
+                    </input>
+                </div>
+                </p>
 
-    <fieldset>
-        <legend>Identification</legend>
-        {{ form.has_specimen|bootstrap }}
-        {{ form.reported_category|bootstrap }}
-        <div id="reported-species">
-            {{ form.reported_species|bootstrap }}
+                {% if form.point.errors %}
+                    <div class="alert alert-danger">
+                        Please drag the pin to the location where the specimen was found.
+                    </div>
+                {% endif %}
+                {{ form.point }}
+                <div id="map-canvas" class="scroll-space-on-mobile" style="height:300px; width: 100%; margin-bottom: 5px; margin-top: 0px;"></div>
+                <br />
+                {{ form.location|bootstrap }}
+            </fieldset>
         </div>
-        {{ form.description|bootstrap }}
-    </fieldset>
 
-    {% include '_images.html' %}
+        <div class="row">
+            <fieldset class="col-md-5">
+                <legend>Identification</legend>
+                {{ form.has_specimen|bootstrap }}
+                {{ form.reported_category|bootstrap }}
+                <div id="reported-species">
+                    {{ form.reported_species|bootstrap }}
+                </div>
+                {{ form.description|bootstrap }}
+            </fieldset>
 
-    <fieldset>
-        <legend>Questions?</legend>
-        {{ form.questions|bootstrap }}
-    </fieldset>
+            <fieldset class="col-md-7">
+                {% include '_images.html' %}
+                
+            </fieldset> 
+        </div>
+        <fieldset>
+            <legend>Questions?</legend>
+            {{ form.questions|bootstrap }}
+        </fieldset>
 
-    <input type="submit" name="submit" value="Submit" id="submit" class="btn btn-primary"/>
-    <a href="{% url 'reports-list' %}" class="btn btn-warning">Cancel</a>
-    <div id="previews"></div>
-</form>
+    
+
+        <input type="submit" name="submit" value="Submit" id="submit" class="btn-submit"/>
+        <a href="{% url 'reports-list' %}" class="btn-cancel">Cancel</a>
+        <div id="previews"></div>
+    </form>
+</div>
 {% endblock %}
 
 {% block js %}
