@@ -89,12 +89,15 @@
 
         <nav id="navbar">
             <ul>
+                {% if user.is_authenticated %}
                 <li style="float: left; margin-right: 20px;">
                     <button id="toggle-sidebar" class="navbaranchor" style="background: none; border: none; margin-left: -20px;">
                         <img src="/static/img/empty-box.png" alt="Toggle Sidebar" style="width: 20px; height: 20px;">
                     </button>
                 </li>
-                <li style="margin-left: auto;">
+                {% else %}
+                <!-- <li style="margin-left: auto;"> -->
+                <li>
                     <a href="{% url 'home' %}" class="navbaranchor">Home</a>
                 </li>
                 <li>
@@ -106,6 +109,8 @@
                 <li>
                     <a href="{% url 'reports-create' %}" class="navbaranchor">Report Now</a>
                 </li>
+                {% endif %}
+
             </ul>
         </nav>
         
@@ -123,9 +128,11 @@
             </div>
             <nav id="small-nav-bar" class="collapsed-block">
                 <ul>
+                    {% if user.is_authenticated %}
                     <li class="navbaranchor nav-list-item sm-nav-list-item">
                         <a href="{% url 'home' %}">Homepage</a>
                     </li>
+                    {% endif %}
                     <li class="navbaranchor nav-list-item sm-nav-list-item">
                         <a href="{% url 'reports-list' %}">Search Reports</a>
                     </li>
@@ -134,6 +141,9 @@
                     </li>
                     <li class="navbaranchor nav-list-item sm-nav-list-item">
                         <a href="{% url 'reports-create' %}">Report now</a>
+                    </li>
+                    <li class="navbaranchor nav-list-item sm-nav-list-item">
+                        <a href="{% url 'login' %}">Login</a>
                     </li>
                 </ul>
             </nav>

@@ -83,7 +83,8 @@ function getDefaultMapOptions(){
 }
 
 // Code to allow the Hamburger Menu to be functional on small pages
-const smallNavToggle = document.querySelector('#navbar-toggler');
+// const smallNavToggle = document.querySelector('#navbar-toggler');
+const smallNavToggle = document.querySelector('#small-nav-bar-div');
 // const theSmallHeaderElement = document.querySelector('#small-screen-header nav');
 const theSmallNavElement = document.querySelector('#small-nav-bar');
 const theMainElement = document.querySelector('#main');

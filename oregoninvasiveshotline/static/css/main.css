@@ -918,6 +918,10 @@ body {
         width: 600px;
     }
 
+    main#main{
+        margin-top: 30px;
+    }
+
     @media only screen and (max-width: 900px) {
         .login-button {
             display: none;
@@ -927,14 +931,18 @@ body {
             display: none;
         }
 
+        button#navbar-toggler {
+            width: 100%;
+            height: 30px;
+        }
+
         #small-screen-header {
             margin-top: 0;
             display: block;
         }
 
         #small-nav-bar-div {
-          position: fixed;
-          top: 0;
+          position: inline-block;
           margin-right: auto;
           margin-left: auto;
           width: 100%;
@@ -942,6 +950,7 @@ body {
 
         nav#small-nav-bar {
             width: 100%;
+            height: 100%;
         }
 
         nav#small-nav-bar ul {
@@ -971,11 +980,21 @@ body {
           margin-left: 8px;
           background-color: var(--white);
         }
-    
+
         #small-nav-bar .nav-list-item a {
           /* width: 260px; */
           width: 350px;
-          margin-left: 35px;
+          margin-left: 5px;
+        }
+
+        #small-nav-bar {
+            padding-left: auto;
+            padding-right: auto;
+        }
+
+        #small-nav-bar ul{
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #small-nav-bar ul li a {
