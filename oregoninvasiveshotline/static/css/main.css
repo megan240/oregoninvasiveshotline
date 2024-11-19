@@ -757,9 +757,9 @@ body {
     }
 
     /* the actual reports listed pulled from database */
-    table.reports-table-layout {
+    /* table.reports-table-layout {
         border: 1px dotted green;
-    }
+    } */
 
     div#Report-Zebra-Database-Listing {
         padding: 10px;
@@ -769,6 +769,10 @@ body {
         /* clear: both; */
         width: 600px;
         height: 560px;
+    }
+
+    div.listing-report-template {
+        margin-bottom: 10px;
     }
 
     p.report-zebra-title {
@@ -781,17 +785,90 @@ body {
         font-weight: bold;
     }
 
-    td.reports-table-img {
-        border: 1px solid green;
+    div#listing-box-container {
+        border: 1px solid var(--black);
+        width: 95%;
+        height: 450px;
+        margin-top: 15px;
+        padding: 10px;
+        overflow-y: auto;
     }
 
-    select#id_counties {
-        border: 3px solid red;
+    div.listing-report-template {
+        border: 2px solid var(--inv-green);
+        height: 120px;
+        border-radius: 10px;
     }
 
-    /* .select2-container--bootstrap {
-    border: 3px solid orange;
-} */
+    table.single-report-table-card {
+        height: 120px;
+        width: 100%;
+    }
+
+    tr.database-row-tr {
+        height: 30px;
+        padding: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    td.img-cell-table {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    table tbody tr td h2 {
+        font-size: 18px;
+        color: var(--inv-green);
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 400px;
+        white-space: nowrap;
+    }
+
+    table tbody tr td p {
+        display: inline-block;
+        font-size: 14px;
+        width: 100px;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tbody tr td p.category-cell-table-label, table tbody tr td p.county-cell-table-label {
+        margin: 0;
+        padding: 0;
+        margin-left: 15px;
+    }
+
+    table tbody tr td p.category-cell-data, table tbody tr td p.county-cell-data {
+        color: var(--italicblue);
+        font-weight: bold;
+        font-size: 16px;
+        width: 120px;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tbody tr td p.small-report-info {
+        font-size: 12px;
+        width: 110px;
+        margin: 0;
+        padding: 0;
+        margin-left: 60px;
+        text-align: left;
+    }
+
+    table tbody tr td p.small-report-info-date {
+        font-size: 12px;
+        width: 240px;
+        margin: 0;
+        padding: 0;
+        padding-right: 5px;
+        text-align: right;
+    }
 
     /* Pagination */
     div.arrow-buttons-div {
@@ -902,7 +979,7 @@ body {
 
     /* The zebra list of reports on search reports page */
     div table.report-database-list {
-        border: 1px solid var(--inv-green);
+        /* border: 1px solid var(--inv-green); */
         width: 600px;
     }
 
