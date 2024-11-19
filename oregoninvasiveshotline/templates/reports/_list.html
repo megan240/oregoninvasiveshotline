@@ -4,22 +4,20 @@
         <p class="report-zebra-title">Reports</p>
         {% include '_pagination.html' with items=page %}
     </div>
-    <div class="col-md-5 {% if not reports %}hidden{% endif %}">
-        <!-- <table class="table reports-table report-database-list double-zebra "> -->
-        
+    <div class="col-md-5 {% if not reports %}hidden{% endif %}">        
         <div>
             {% if items.number %}
                 Page {{ items.number }} of {{ items.paginator.num_pages }}
             {% endif %}
         </div>
     </div>
-    <div id="Listing-Box-Container">
+    <div id="listing-box-container">
         
         {% for report in reports %}
         <div class="listing-report-template">
-            <table>
+            <table class="single-report-table-card">
                 <tbody>
-                    <tr class="top-tr-left top-tr-right">
+                    <tr class="database-row-tr">
                         <td class="img-cell-table" rowspan="4" colspan="1">
                             <!-- picture -->
                             <a href="#map-canvas" class="report-location-click" data-report-index="{{ forloop.counter0 }}">
@@ -34,24 +32,24 @@
                             <h2>{{ report.species|default:report.category }}</h2>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="database-row-tr">
                         <td class="category-cell-data" rowspan="1" colspan="3">
                             <p class="category-cell-table-label">category:</p>
                             <p class="category-cell-data">{{ report.category }}</p>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="database-row-tr">
                         <td class="county-cell-data" rowspan="1" colspan="3">
                             <p class="county-cell-table-label">county      :</p>
                             <p class="county-cell-data">{{ report.county|default:'Not in OR/WA' }}</p>
                         </td>
                     </tr>
-                    <tr class="bottom-tr-left bottom-tr-right">
+                    <tr class="database-row-tr">
                         <td class="report-data-cell-table publish-date-cell-table" rowspan="1" colspan="3">
                             <a href="{% url 'reports-detail' report.pk %}">
-                                <p>report: #{{ report.pk }}</p>
+                                <p class="small-report-info">report: #{{ report.pk }}</p>
                             </a>
-                            <p>publish date - {{ report.created_on }}</p>
+                            <p class="small-report-info-date">publish date - {{ report.created_on }}</p>
                         </td>
                     </tr>
                 </tbody>
