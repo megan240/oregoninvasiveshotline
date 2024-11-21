@@ -49,6 +49,7 @@ class Report(models.Model):
     point = models.PointField(srid=4326)
     county = models.ForeignKey('counties.County', null=True, on_delete=models.SET_NULL)
     city = models.ForeignKey('cities.City', null=True, on_delete=models.SET_NULL)
+    watershed = models.ForeignKey('watersheds.Watershed', null=True, on_delete=models.SET_NULL)
 
     created_by = models.ForeignKey("users.User", related_name="reports", on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)

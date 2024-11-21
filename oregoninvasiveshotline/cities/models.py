@@ -15,8 +15,9 @@ class City(models.Model):
     def label(self):
         if self.state == 'Oregon':
             return self.name
-        else:
-            return f"{self.name}, {self.state}"
+        elif self.state == 'Washington':
+            return f"{self.name}, WA"
+        return f"{self.name}, {self.state}"
 
     def __str__(self):
         return self.label

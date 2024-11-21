@@ -4,6 +4,7 @@ from django.http import QueryDict
 from oregoninvasiveshotline.species.models import Category
 from oregoninvasiveshotline.counties.models import County
 from oregoninvasiveshotline.cities.models import City
+from oregoninvasiveshotline.watersheds.models import Watershed
 
 
 class UserNotificationQuery(models.Model):
@@ -49,6 +50,10 @@ class UserNotificationQuery(models.Model):
             cities = City.objects.filter(pk__in=query.getlist('cities'))
             cities = cities.values_list('name', flat=True).order_by('name')
             query_items['Cities'] = ", ".join(cities)
+        if query.get('watersheds'):
+            watersheds = Watershed.objects.filter(pk__in=query.getlist('watersheds'))
+            watersheds = watersheds.values_list('name', flat=True).order_by('name')
+            query_items['Watersheds'] = ", ".join(watersheds)
         if query.get('q'):
             query_items['Keyword'] = query['q']
         return query_items

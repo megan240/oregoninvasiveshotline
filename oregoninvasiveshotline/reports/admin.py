@@ -6,11 +6,11 @@ from .models import Report
 
 class CustomGeoModelAdmin(OSMGeoAdmin):
     list_display = ['report_id', '__str__',
-                    'county', 'city',
+                    'county', 'city', 'watershed',
                     'claimed_by', 'created_on']
     list_display_links = ['__str__']
     list_filter = ['has_specimen',
-                   'county', 'city',
+                   'county', 'city', 'watershed',
                    'edrr_status',
                    'is_archived', 'is_public',
                    'actual_species']

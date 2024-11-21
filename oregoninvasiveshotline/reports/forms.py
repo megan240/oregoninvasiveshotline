@@ -9,6 +9,7 @@ from oregoninvasiveshotline.utils.search import SearchForm
 from oregoninvasiveshotline.comments.models import Comment
 from oregoninvasiveshotline.counties.models import County
 from oregoninvasiveshotline.cities.models import City
+from oregoninvasiveshotline.watersheds.models import Watershed
 from oregoninvasiveshotline.species.models import Category, Severity, Species
 from oregoninvasiveshotline.users.models import User
 from oregoninvasiveshotline.reports.models import Invite, Report
@@ -38,6 +39,12 @@ def get_city_choices():
         city_choices.append((city.pk, city.label))
     return city_choices
 
+def get_watershed_choices():
+    watershed_choices = []
+    for watershed in Watershed.objects.all().order_by('state', 'name'):
+        watershed_choices.append((watershed.pk, watershed.label))
+    return watershed_choices
+
 
 class ReportSearchForm(SearchForm):
     """
@@ -52,7 +59,7 @@ class ReportSearchForm(SearchForm):
     since that will break any :class:`UserNotificationQuery` rows that
     rely on that field.
     """
-    public_fields = ['q', 'order_by', 'source', 'categories', 'counties', 'cities']
+    public_fields = ['q', 'order_by', 'source', 'categories', 'counties', 'cities', 'watersheds']
 
     source = forms.ChoiceField(
         required=False,
@@ -80,6 +87,12 @@ class ReportSearchForm(SearchForm):
         label='',
         choices=get_city_choices,
         widget=forms.SelectMultiple(attrs={'title': 'Cities'})
+    )
+    watersheds = forms.MultipleChoiceField(
+        required=False,
+        label='',
+        choices=get_watershed_choices,
+        widget=forms.SelectMultiple(attrs={'title': 'Watersheds'})
     )
     is_archived = forms.ChoiceField(
         required=False,
@@ -121,6 +134,7 @@ class ReportSearchForm(SearchForm):
         return (
             'county__name',
             'city__name',
+            'watershed__name',
             'reported_category__name',
             'reported_species__name',
             'reported_species__scientific_name',
@@ -171,6 +185,10 @@ class ReportSearchForm(SearchForm):
         if self.cleaned_data.get('cities'):
             reports = reports.filter(
                 city__in=self.cleaned_data.get('cities')
+            )
+        if self.cleaned_data.get('watersheds'):
+            reports = reports.filter(
+                watershed__in=self.cleaned_data.get('watersheds')
             )
         if self.cleaned_data.get('categories'):
             reports = reports.filter(
@@ -309,6 +327,7 @@ class ReportForm(forms.ModelForm):
         report.created_by = user
         report.county = County.objects.filter(the_geom__intersects=report.point).first()
         report.city = City.objects.filter(the_geom__intersects=report.point).first()
+        report.watershed = Watershed.objects.filter(the_geom__intersects=report.point).first()
 
         if not report.county or not report.city:
             raise forms.ValidationError("Reports can only be made within Oregon and Clark County, WA.")

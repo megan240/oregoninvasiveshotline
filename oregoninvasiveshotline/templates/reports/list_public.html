@@ -20,15 +20,19 @@
             </div>
             <div class="col-lg-5">
                 <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                     <span class="strong">Counties</span>
                     {{ form.counties }}
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                     <span class="strong">Cities</span>
                     {{ form.cities }}
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
+                    <span class="strong">Watersheds</span>
+                    {{ form.watersheds }}
+                  </div>
+                  <div class="col-lg-3">
                     <span class="strong">Categories</span>
                     <a href="{% url 'reports-help' %}?modal=true"
                        class="modal-remote help"
