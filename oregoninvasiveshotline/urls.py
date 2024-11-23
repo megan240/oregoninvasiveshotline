@@ -11,6 +11,7 @@ from .reports import views as reports
 from .species import views as species
 from .users import views as users
 from .views import HomeView, AdminPanelView
+from .views import ViewReportsPageView
 
 
 urlpatterns = [
@@ -70,6 +71,7 @@ urlpatterns = [
     url(r'', include('django.contrib.auth.urls')),
 
     url(r'pages/', include('oregoninvasiveshotline.pages.urls')),
+    url(r'^view-reports-page/?$', ViewReportsPageView.as_view(), name='view-reports-page'),
 ]
 
 

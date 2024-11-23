@@ -185,6 +185,13 @@
                                         <p class="small text-muted">Manage static pages for content.</p>
                                     </a>
                                 </li>
+                                <!-- View Reports Page Change 7 -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'view-reports-page' %}">
+                                        <img src="/static/img/empty-box.png" alt="View Reports Page Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> View Reports Page
+                                        <p class="small text-muted">Access admin-only content.</p>
+                                    </a>
+                                </li>
                             {% endif %}
                             {% if user.is_staff %}
                                 <hr>

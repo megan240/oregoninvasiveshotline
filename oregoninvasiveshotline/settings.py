@@ -297,3 +297,5 @@ processors.set_smtp_parameters(config, settings)
 
 # Configure Google Maps API key
 GOOGLE_API_KEY = processors.get_secret_value(config, 'GOOGLE_API_KEY')
+
+X_FRAME_OPTIONS = 'SAMEORIGIN' # Allow the same origin to frame this site

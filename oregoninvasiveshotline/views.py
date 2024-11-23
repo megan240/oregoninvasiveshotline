@@ -6,6 +6,10 @@ from rest_framework.views import APIView
 from .reports.models import Report
 from .reports.serializers import ReportSerializer
 
+# View Reports Page Change 1
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
 
 class HomeView(APIView):
 
@@ -49,3 +53,8 @@ class AdminPanelView(APIView):
 
     def get(self, request):
         return Response({})
+
+# View Reports Page Change 2
+@method_decorator(staff_member_required, name='dispatch')
+class ViewReportsPageView(TemplateView):
+    template_name = 'view_reports_page.html'
