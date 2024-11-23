@@ -604,6 +604,8 @@ body {
         padding-top: 1px;
         background-color: var(--inv-green);
         border-color: var(--inv-green);
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #navbar ul {
