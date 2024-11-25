@@ -1,27 +1,74 @@
-.flatpage-header {
-    float:left;
-    margin-top:0;
+.info-container {
+    width: 100%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+.flatpage-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: #234915; 
+    font-size: 36px; 
+    font-weight: 600; 
+    margin-bottom: 20px;
 }
 
-.flatpage-content h2 {
-    font-size: 18px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+.flatpage-tab {
+    display: flex;
+    list-style: none;
+    margin: 15px 0;
+    padding: 0;
+    border-bottom: 3px solid #ddd; 
+    justify-content: left; 
 }
 
-.flatpage-edit {
-    margin-left:10px;
-}
-
-.flatpage-tabs li {
-    float:right;
-}
-
-@media (max-width: 992px){
-    .flatpage-tabs {
-        clear:both;
+    .flatpage-tab li {
+        margin: 5px; 
     }
-    .flatpage-tabs li {
-        float:left;
+
+    .flatpage-tab a {
+        text-decoration: none;
+        color: #ffffff; 
+        padding: 10px 20px; 
+        background-color: #aeaeae; 
+        border-radius: 6px; 
+        transition: background-color 0.3s ease, color 0.3s ease;
+        display: inline-block; 
     }
+    .flatpage-tab li.active a,
+    .flatpage-tab a:hover {
+        background-color: #1ea903; 
+        color: white; 
+        font-weight: bold; 
+    }
+
+.flatpage-content {
+    color: #333; 
+    font-size: 16px; 
+    line-height: 1.6; 
+    padding: 20px; 
+    margin-top: -5px;
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    max-width: 100%; 
 }
+    /* subheadings */
+    .flatpage-content h2 {
+        color: #2c3e50; 
+        font-size: 24px; 
+        margin-bottom: 15px; 
+    }
+    /*paragraphs*/
+    .flatpage-content p {
+        margin-bottom: 15px; 
+    }
+    /* lists */
+    .flatpage-content ul {
+        margin-left: 20px; 
+        margin-bottom: 15px; 
+    }
+    /* links */
+    .flatpage-content a {
+        color: #3498db; 
+        font-weight: bold; 
+    }
+   
+
