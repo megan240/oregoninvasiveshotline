@@ -12,8 +12,8 @@ from .reports import views as reports
 from .species import views as species
 from .users import views as users
 from .views import HomeView, AdminPanelView, update_user_name, update_user_email, update_user_biography, update_user_affiliations
+from .views import ViewReportsPageView
 from . import views
-
 
 urlpatterns = [
     # Redirects for the old site
@@ -66,16 +66,13 @@ urlpatterns = [
     url(r'^users/edit/(?P<user_id>\d+)/?$', users.edit, name='users-edit'),
     url(r'^users/home/?$', users.home, name='users-home'),
     url(r'^users/list/?$', users.list_, name='users-list'),
-    path('users/update-name/<int:pk>/', update_user_name, name='update-user-name'),
-    path('users/update-email/<int:pk>/', update_user_email, name='update-user-email'),
-    path('users/update-biography/<int:pk>/', update_user_biography, name='update-user-biography'),
-    path('users/update-affiliations/<int:pk>/', update_user_affiliations, name='update-user-affiliations'),
 
     # url(r'^login/?$', users.login, name='login'),
     url(r'^login/?$', users.LoginView.as_view(), name='login'),
     url(r'', include('django.contrib.auth.urls')),
 
     url(r'pages/', include('oregoninvasiveshotline.pages.urls')),
+    url(r'^view-reports-page/?$', ViewReportsPageView.as_view(), name='view-reports-page')
 ]
 
 
