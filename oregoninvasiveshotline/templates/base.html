@@ -92,7 +92,12 @@
                 {% if user.is_authenticated %}
                 <li style="float: left; margin-right: 20px;">
                     <button id="toggle-sidebar" class="navbaranchor" style="background: none; border: none; margin-left: -20px;">
-                        <img src="/static/img/empty-box.png" alt="Toggle Sidebar" style="width: 20px; height: 20px;">
+                        <img 
+                            src="/static/img/empty-box.png" 
+                            alt="Toggle Sidebar" 
+                            width="20"
+                            height="20"
+                        >
                     </button>
                 </li>
                 {% else %}
@@ -113,7 +118,21 @@
 
             </ul>
         </nav>
-        
+        {% if user.is_authenticated %}
+        <header id="navbar-two">
+            
+                <li style="float: left; margin-right: 20px;">
+                    <button id="toggle-sidebar-two" class="navbaranchor" style="background: none; border: none; margin-left: -20px;">
+                        <img 
+                            src="/static/img/empty-box.png" 
+                            alt="Toggle Sidebar" 
+                            width="20"
+                            height="20"
+                        >
+                    </button>
+                </li>
+        </header>
+            {% else %}
         <header id="small-screen-header">
             <div id="small-nav-bar-div" class="small-nav-bar-div">
                 <button id="navbar-toggler" type="button">
@@ -148,6 +167,7 @@
                 </ul>
             </nav>
         </header>
+        {% endif %}
 
         <!-- Side Menu Implementation - Layered Above Content, Positioned Below Navbar -->
         <div id="side-menu" class="side-menu-container" style="position: fixed; top: 0; left: 0; height: 100%; width: 250px; background-color: #ffffff; z-index: 1050; overflow-y: auto; box-shadow: 2px 0 5px rgba(0,0,0,0.1); display: none;">
@@ -156,14 +176,50 @@
                     <h5 class="card-title">Profile</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">
+                            <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Search Reports Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Logout
+                                <p class="small text-muted"> Logout of profile</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Search Reports Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Home
+                                <p class="small text-muted"> Website home landing page.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/reports/list">
-                                <img src="/static/img/empty-box.png" alt="Search Reports Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Search Reports
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Search Reports Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                    > Search Reports
                                 <p class="small text-muted">View and search all reports.</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/reports/list?order_by=-created_on&is_public=notpublic&is_archived=notarchived&claimed_by=nobody&tabs=unclaimed_reports">
-                                <img src="/static/img/empty-box.png" alt="Unclaimed Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Unclaimed
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Unclaimed Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Unclaimed
                                 <p class="small text-muted">Manage unclaimed reports.</p>
                             </a>
                         </li>
@@ -171,19 +227,36 @@
                             <hr>
                             <li class="nav-item">
                                 <a class="nav-link" href="/species/list">
-                                    <img src="/static/img/empty-box.png" alt="Species Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Species
+                                    <img 
+                                        src="/static/img/empty-box.png" 
+                                        alt="Species Icon" class="sidebar-icon" 
+                                        width="20"
+                                        height="20"
+                                    > Species
                                     <p class="small text-muted">View and manage species information.</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/categories/list">
-                                    <img src="/static/img/empty-box.png" alt="Categories Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Categories
+                                    <img 
+                                        src="/static/img/empty-box.png" 
+                                        alt="Categories Icon" 
+                                        class="sidebar-icon" 
+                                        width="20"
+                                        height="20"
+                                    > Categories
                                     <p class="small text-muted">View and manage categories.</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/severities/list">
-                                    <img src="/static/img/empty-box.png" alt="Static Pages Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Static Pages
+                                    <img 
+                                        src="/static/img/empty-box.png" 
+                                        alt="Static Pages Icon" 
+                                        class="sidebar-icon" 
+                                        width="20"
+                                        height="20"
+                                    > Static Pages
                                     <p class="small text-muted">Manage static pages for content.</p>
                                 </a>
                             </li>
@@ -192,19 +265,36 @@
                             <hr>
                             <li class="nav-item">
                                 <a class="nav-link" href="/users/list">
-                                    <img src="/static/img/empty-box.png" alt="Users Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Users
+                                    <img 
+                                        src="/static/img/empty-box.png" 
+                                        alt="Users Icon" class="sidebar-icon" 
+                                        width="20"
+                                        height="20"
+                                    > Users
                                     <p class="small text-muted">Manage user accounts.</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/reports/report/">
-                                    <img src="/static/img/empty-box.png" alt="Reports Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Reports
+                                    <img 
+                                        src="/static/img/empty-box.png" 
+                                        alt="Reports Icon" 
+                                        class="sidebar-icon" 
+                                        width="20"
+                                        height="20"
+                                    > Reports
                                     <p class="small text-muted">Administer all submitted reports.</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/notifications/all">
-                                    <img src="/static/img/empty-box.png" alt="Subscriptions Icon" class="sidebar-icon" style="width: 20px; height: 20px;"> Subscriptions
+                                    <img 
+                                        src="/static/img/empty-box.png" 
+                                        alt="Subscriptions Icon" 
+                                        class="sidebar-icon" 
+                                        width="20"
+                                        height="20"
+                                    > Subscriptions
                                     <p class="small text-muted">View and manage subscriptions.</p>
                                 </a>
                             </li>
@@ -305,6 +395,25 @@
             });
 
             // Close sidebar when clicking outside of it
+            $("#overlay").click(function() {
+                $("#side-menu").hide();
+                $("#overlay").hide();
+            });
+          </script>
+          <script>
+            // Toggle sidebar visibility on small screen
+            $("#toggle-sidebar-two").click(function() {
+                $("#side-menu").show();
+                $("#overlay").show();
+            });
+
+            // Close sidebar button on small screen
+            $("#close-sidebar").click(function() {
+                $("#side-menu").hide();
+                $("#overlay").hide();
+            });
+
+            // Close sidebar when clicking outside of it on small screen
             $("#overlay").click(function() {
                 $("#side-menu").hide();
                 $("#overlay").hide();

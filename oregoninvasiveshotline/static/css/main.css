@@ -3,7 +3,7 @@
     --inv-green: #577716;
     --inv-light-orange: #dd8f19a9;
     --inv-orange: #dd8e19;
-    --italicblue: steelblue;
+    --italicblue: #336085;
     --lightblue: lightblue;
     --lightgray: #c7c3c3;
     --text-black: #050505;
@@ -416,6 +416,7 @@ body {
     blockquote {
         font-style: normal;
         font-size: 14px;
+        width: 600px;
     }
 
     .report-heading img {
@@ -588,6 +589,10 @@ body {
         display: none;
     }
 
+    #navbar-two {
+        display: none;
+    }
+
     .collapsed-block {
         display: none;
     }
@@ -693,7 +698,19 @@ body {
         display: block;
         float: left;
         width: 500px;
-        height: 560px;
+        height: 620px;
+    }
+
+    form.form-inline-admin{
+        display: block;
+        float: left;
+        width: 500px;
+        height: 700px;
+    }
+
+    div.filters-form-div{
+        width: 500px;
+        height: 100px;
     }
 
     div#search-input-group {
@@ -721,6 +738,10 @@ body {
         margin: 0;
         padding: 0;
         padding-bottom: 10px;
+    }
+
+    input#id_q {
+        border: 1px solid var(--lightgray) !important;
     }
 
     label.category-box-label,
@@ -780,7 +801,7 @@ body {
         float: left;
         /* clear: both; */
         width: 600px;
-        height: 560px;
+        height: 700px;
     }
 
     div.listing-report-template {
@@ -800,7 +821,7 @@ body {
     div#listing-box-container {
         border: 1px solid var(--black);
         width: 95%;
-        height: 450px;
+        height: 515px;
         margin-top: 15px;
         padding: 10px;
         overflow-y: auto;
@@ -859,7 +880,7 @@ body {
         color: var(--italicblue);
         font-weight: bold;
         font-size: 16px;
-        width: 120px;
+        width: 300px;
         margin: 0;
         padding: 0;
     }
@@ -999,6 +1020,41 @@ body {
         margin-top: 30px;
     }
 
+    /* The Details Page when you report on a report # link */
+    div.detail-page-container {
+        width: 100%;
+    }
+
+    h3.report-detail-specimen-title {
+        color: var(--black);
+        font-weight: bold;
+        font-size: 36px;
+        margin-bottom: 25px;
+    }
+
+    div.gallery-div-box {
+        height: 300px;
+        width: 600px;
+    }
+
+    div.detail-page-map-location {
+        display: inline-block;
+        height: 400px;
+        width: 600px;
+    }
+
+    div.detail-page-report {
+        display: block;
+        width: 700px;
+    }
+
+    div.detail-page-map-and-location {
+        display: block;
+        float: right;
+        width: 480px;
+        height: 400px;
+    }
+
     @media only screen and (max-width: 900px) {
         .login-button {
             display: none;
@@ -1016,6 +1072,14 @@ body {
         #small-screen-header {
             margin-top: 0;
             display: block;
+        }
+
+        #navbar-two {
+            margin-top: 0;
+            display: block;
+            width: 100%;
+            height: 50px;
+            background-color: var(--inv-green);
         }
 
         #small-nav-bar-div {
@@ -1104,5 +1168,18 @@ body {
         p.future-small-nav-para {
             color: white;
         }
+
     }
+
+    @media (max-width: 767px){
+        div#search-input-group.input-group {
+            margin-top: 110px;
+        }
+
+        div#Report-Zebra-Database-Listing {
+            margin-top: 200px;
+        }
+    }
+
+    
 }
