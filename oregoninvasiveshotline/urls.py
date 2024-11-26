@@ -66,7 +66,12 @@ urlpatterns = [
     url(r'^users/edit/(?P<user_id>\d+)/?$', users.edit, name='users-edit'),
     url(r'^users/home/?$', users.home, name='users-home'),
     url(r'^users/list/?$', users.list_, name='users-list'),
-
+    # Added paths to allow editing on users/home.html
+    path('users/update-name/<int:pk>/', update_user_name, name='update-user-name'),
+    path('users/update-email/<int:pk>/', update_user_email, name='update-user-email'),
+    path('users/update-biography/<int:pk>/', update_user_biography, name='update-user-biography'),
+    path('users/update-affiliations/<int:pk>/', update_user_affiliations, name='update-user-affiliations'),
+    
     # url(r'^login/?$', users.login, name='login'),
     url(r'^login/?$', users.LoginView.as_view(), name='login'),
     url(r'', include('django.contrib.auth.urls')),
