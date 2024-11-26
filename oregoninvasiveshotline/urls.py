@@ -3,6 +3,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import redirect
+from django.urls import path
 
 from .comments import views as comments
 from .notifications import views as notifications
@@ -10,8 +11,9 @@ from .perms import permissions
 from .reports import views as reports
 from .species import views as species
 from .users import views as users
-from .views import HomeView, AdminPanelView
-from .views import ViewReportsPageView
+from .views import HomeView, AdminPanelView, update_user_name, update_user_email, update_user_biography, update_user_affiliations
+from . import views
+
 
 
 urlpatterns = [
@@ -65,6 +67,10 @@ urlpatterns = [
     url(r'^users/edit/(?P<user_id>\d+)/?$', users.edit, name='users-edit'),
     url(r'^users/home/?$', users.home, name='users-home'),
     url(r'^users/list/?$', users.list_, name='users-list'),
+    path('users/update-name/<int:pk>/', update_user_name, name='update-user-name'),
+    path('users/update-email/<int:pk>/', update_user_email, name='update-user-email'),
+    path('users/update-biography/<int:pk>/', update_user_biography, name='update-user-biography'),
+    path('users/update-affiliations/<int:pk>/', update_user_affiliations, name='update-user-affiliations'),
 
     # url(r'^login/?$', users.login, name='login'),
     url(r'^login/?$', users.LoginView.as_view(), name='login'),
