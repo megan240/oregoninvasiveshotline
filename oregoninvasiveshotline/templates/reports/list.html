@@ -13,12 +13,10 @@
 {% block main_class %}container-fluid{% endblock %}
 
 {% block content %}
-    {% include 'nav_tabs.html' with tab=tab %}
     <div class="tab-content">
-        <div class="tab-pane active" id="{{ tab }}">
-            <form class="form-inline"> 
-              <!-- <div class="col-lg-offset-7 col-lg-5" style="padding-top: 1em;"> -->
-              <div>
+        <div class="active" id="{{ tab }}">
+            <form class="form-inline form-inline-admin"> 
+              <div class="filters-form-div">
                 <span class="strong">Filters</span><br/>
                 {{ form.claimed_by|bootstrap }}
                 {{ form.is_public|bootstrap }}
@@ -26,8 +24,6 @@
                 {% if form.source %}{{ form.source|bootstrap }}{% endif %}
               </div>    
               {% include 'reports/search/_fields.html' %}
-              <!-- <div class="row"> -->
-              <!-- </div> -->
               <div class="row">
                 {{ form.non_field_errors }}
               </div>

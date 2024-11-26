@@ -15,6 +15,7 @@ from .views import HomeView, AdminPanelView, update_user_name, update_user_email
 from . import views
 
 
+
 urlpatterns = [
     # Redirects for the old site
     url(r'^reports/(?P<report_id>\d+)/?$', lambda request, report_id: redirect('reports-detail', report_id)),
@@ -76,6 +77,7 @@ urlpatterns = [
     url(r'', include('django.contrib.auth.urls')),
 
     url(r'pages/', include('oregoninvasiveshotline.pages.urls')),
+    url(r'^view-reports-page/?$', ViewReportsPageView.as_view(), name='view-reports-page'),
 ]
 
 

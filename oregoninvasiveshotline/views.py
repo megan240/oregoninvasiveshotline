@@ -10,7 +10,14 @@ import json
 from .reports.models import Report
 from .reports.serializers import ReportSerializer
 
+
 User = get_user_model()
+
+# View Reports Page Change 1
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
+
 
 class HomeView(APIView):
 
@@ -124,3 +131,8 @@ def update_user_affiliations(request, pk):
             print('Error:', str(e))
             return JsonResponse({'success': False, 'error': str(e)})
     return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+# View Reports Page Change 2
+@method_decorator(staff_member_required, name='dispatch')
+class ViewReportsPageView(TemplateView):
+    template_name = 'view_reports_page.html'
