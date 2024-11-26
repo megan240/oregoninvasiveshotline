@@ -24,6 +24,9 @@
     <li{% if nav_active == 'reports' %} class="active"{% endif %}>
         <a href="{% url 'admin:reports_report_changelist' %}">Reports</a>
     </li>
+    <li{% if nav_active == 'view_reports_page' %} class="active"{% endif %}>
+        <a href="{% url 'view-reports-page' %}">View Reports Page</a>
+    </li>
     <li{% if nav_active == 'subscriptions' %} class="active"{% endif %}>
         <a href="{% url 'notifications-admin-list' %}">Subscriptions</a>
     </li>
