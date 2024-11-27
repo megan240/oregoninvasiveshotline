@@ -7,90 +7,35 @@
 Report an Invader
 {% endblock %}
 {% block content %}
-<style>
-.btn-submit {
-    background-color: #20601a;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px; 
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    display: inline-block; 
-    text-align: center;
-}
-
-.btn-submit:hover {
-    background-color: #34912b;
-    transform: scale(1.05); 
-}
-
-.btn-submit:active {
-    transform: scale(1); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-}
-.btn-cancel {
-    background-color: #ffae4a; 
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px; 
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    display: inline-block;
-    text-align: center;
-    margin-left: 10px;
-}
-
-.btn-cancel:hover {
-    background-color: #ffc074; 
-    transform: scale(1.05); 
-}
-
-.btn-cancel:active {
-    transform: scale(1); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-}
-.form-container {
-    max-width: 2800px; /* Set a max width for the form */
-    margin: 0 auto; /* Center the form horizontally */
-    padding: 20px;
-    width: 100%;
-}
-</style>
 <div class="form-container">
-    <h3>Report an Invader Form</h3>
 
+    <h1>Report Invader Form</h1>
     <div class="alert" style="background-color: rgb(231, 255, 212);">
         <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span>
         Please note, the descriptive in your report may become viewable by the public. Contact information will only be visible to you and Hot-line Managers, IT WIILL NOT be made public
     </div>
-    
     <p><em>* indicates the field is required</em></p>
+
     <form method="post" enctype="multipart/form-data" id="reports-form">
         {% if form.errors or formset.errors %}
-            <div class="alert alert-danger">
-                Please correct the errors below.
-            </div>
+        <div class="alert alert-danger">
+            Please correct the errors below.
+        </div>
         {% endif %}
         {% csrf_token %}
-    
+        <!-- First half, contact and location info-->
         <div class="row">
             <fieldset class="col-md-5">  
-                    <legend>Your Contact Info</legend>
-                    {{ form.first_name|bootstrap }}
-                    <br>
-                    {{ form.last_name|bootstrap }}
-                    <br>
-                    {{ form.phone|bootstrap }}
-                    <br>
-                    {{ form.email|bootstrap }}
-                    <br>
-                    {{ form.has_completed_ofpd|bootstrap }}
+                <legend>Your Contact Info</legend>
+                {{ form.first_name|bootstrap }}
+                <br>
+                {{ form.last_name|bootstrap }}
+                <br>
+                {{ form.phone|bootstrap }}
+                <br>
+                {{ form.email|bootstrap }}
+                <br>
+                {{ form.has_completed_ofpd|bootstrap }}
                 
             </fieldset>
             <fieldset class="col-md-7">
@@ -116,7 +61,7 @@ Report an Invader
                 {{ form.location|bootstrap }}
             </fieldset>
         </div>
-
+        <!-- Second half, species identification and image input-->
         <div class="row">
             <fieldset class="col-md-5">
                 <legend>Identification</legend>

@@ -7,162 +7,39 @@
 {% block body_class %}white{% endblock %}
 
 {% block content %}
-<style>
-    .midline-heading {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    font-size: 2.0em; /* Equivalent to 32px */
-    line-height: 1.2;
-    color: #508228;
-    margin-bottom: 30px;
-}  
-    .midiline-text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1.9em; 
-        color: #777; 
-        padding: 10px;
-        
-    }
-    .heading-map {
-        font-family: 'Arial', sans-serif; 
-        font-size: 2.0em; 
-        line-height: 1.1; 
-        color: #dcdcdc; 
-        margin-bottom: -5px; 
-        text-align: center; 
-    }
-    .map {/* */
-        font-family: 'Arial', sans-serif; 
-        font-size: 1.3em; 
-        line-height: 1.3; 
-        color: #423e3e; 
-        margin-bottom: 15px; 
-        font-weight: bold;
-        text-align: center; 
-    }
-    .map-text {/* */
-        font-family: 'Arial', sans-serif;
-        font-size: 1.1em; 
-        color: #000000; 
-        padding: 10px;
-        
-    }
-    .footer-text {
-        font-weight: bold;
-        font-family: 'Arial', sans-serif;
-        font-size: 1.5em; 
-        color: #505050; 
-        text-align: center;
-        
-    }
-    .main-text a.green-link {
-        font-weight: bold; 
-        font-size: 1.4em; 
-        color: #4b8a28; 
-        text-decoration: none; 
-         
-    }
 
-    .main-text a.green-link:hover {
-        text-decoration: underline; 
-    }
-
-    .sub-text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1.1em; 
-        color: #777; 
-        
-    }
-    .midline-block { 
-        background-color: #f9f9f9; 
-        padding: 15px; 
-        margin: 10px 0; 
-        border-radius: 5px; 
-        width: 33%;
-        box-sizing: border-box; 
-    }
-
-    .midline-block.longest {
-        background-color: #f9f9f9;
-        
-    } 
-
-    .btn-home {/* */
-    background-color: #34912b;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    
-    }
-    .btn-home:hover {/* */
-    background-color: #34912bad;
-}
-
-.modern-section {/* */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 130px;
-    background-color: #f7f7f7; 
-    border: 2px solid #e2e8f0; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
-    margin: 20px;
-    margin-top: 100px;
-    
-}
-
-.modern-content {/* */
-    text-align: center;
-    width: 100%; 
-}
-
-.centered-content {
-    max-width: 600px; 
-    margin: 0 auto; 
-}
-
-
-</style>
-
-
-
-    <div class="row" id="headline">
-        <div class="col-md-4" id="headline-info">
-            <!-- this horrible inline css is brought to you by http://howtocenterincss.com/ -->
-            <div style="display: table; height: 500px; margin-top: -30px;">
-                <div style="display: table-cell; vertical-align: middle;">
-                    <div style="margin-left: auto; margin-right: auto;">
-                        {% getcontent 'headline' %}
-                        <div class="modern-section">
-                            <div class="modern-content">
-                                <p class="map">Need To Make a Report?</p>
-                                <div id="headline-buttons">
-                                    <a class="btn-home" href="{% url 'reports-create' %}">Report Now</a> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <a id="headline-buttons-info" class="btn btn-primary" style="display: block; margin: 0 auto;" href="#">
-                            About the Hotline <span class="arrow">&#8595;</span> </a>
+<link rel="stylesheet" href=".../../../static/css/home.css">
+<!-- Top half -->
+<div class="headline-container" id="headline">
+    <div class="col-md-4" id="headline-info">
+        <!-- left side, headline + report button + down button -->
+        <div class="headline-left-inner">
+            <div class="headline-text">{% getcontent 'headline' %}</div>
+                <div class="modern-section">
+                        <p class="report-btn-text">Need To Make a Report?</p>
+                        <div id="headline-buttons">
+                            <a class="btn-home" href="{% url 'reports-create' %}">Report Now</a>   
                     </div>
                 </div>
-            </div>
-            <div class="col-md-8 hidden-sm hidden-xs" id="headline-map">
-                <div id="map-canvas" style="cursor: pointer; height: 500px;"></div>
-            </div>
+                <a class="headline-btn-down" href="#">
+                    About the Hotline <span class="arrow">&#8595;</span> </a>
         </div>
-        
-
-    <div id="midline">
-        {% getcontent 'midline' %}
-        <div class="modern-section" style="height: 100px; margin-top: 20px;">
-            <p class="main-text"><strong><u>*Note that while your contact information remains confidential, public access is granted to <bold>ONLY</bold> report details and photos under CC-BY Licensing.</strong> </u> </p>
+    </div>
+        <!-- right side, map -->
+        <div class="col-md-8 hidden-sm hidden-xs" id="headline-map">
+            <div id="map-canvas" style="cursor: pointer; height: 100%; width: 100%; margin: 0 auto;"></div>
         </div>
+</div>
+<!-- Middle, hotline info -->
+<div id="midline">
+    <div class="midline-info">
+            {% getcontent 'midline' %} 
+    </div>
+    <div class="modern-section">
+        <p class="note-text"><strong><u>*Note that while your contact information remains confidential, public access is granted to <bold>ONLY</bold> report details and photos under CC-BY Licensing.</strong> </u> </p>
+    </div>
+    <!-- learning boxes-->
+    <div class="box-container">
         <div class="midline-block">
             {% getcontent 'midline-block1' %}
         </div><div class="midline-block longest">
@@ -171,8 +48,9 @@
             {% getcontent 'midline-block3' %}
         </div>
     </div>
+</div>
+{% getcontent 'midline-footer' %}
 
-    {% getcontent 'midline-footer' %}
 {% endblock %}
 
 {% block js %}

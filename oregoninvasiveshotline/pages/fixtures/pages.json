@@ -49,7 +49,7 @@
         "enable_comments": false,
         "url": "/_headline/",
         "title": "headline",
-        "content": "<p class=\"heading-map\">Have you spotted an invasive species that a natural resource manager should know about?</big> </p>",
+        "content": "<p>Have you spotted an invasive species that a natural resource manager should know about?</big> </p>",
         "template_name": "",
         "registration_required": false,
         "sites": [
