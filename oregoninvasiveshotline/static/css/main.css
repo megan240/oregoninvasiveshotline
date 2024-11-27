@@ -215,6 +215,86 @@ body {
         margin-left: 0;
         margin-right: 0;
     }
+    /* create html */
+    .btn-submit {
+        background-color: #20601a;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px; 
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        display: inline-block; 
+        text-align: center;
+        }
+    .btn-submit:hover {
+        background-color: #34912b;
+        transform: scale(1.05); 
+    }
+    .btn-submit:active {
+        transform: scale(1); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    }
+    .btn-cancel {
+        background-color: #ffae4a; 
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px; 
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        display: inline-block;
+        text-align: center;
+        margin-left: 10px;
+    }
+    .btn-cancel:hover {
+        background-color: #ffc074; 
+        transform: scale(1.05); 
+    }
+
+    .btn-cancel:active {
+        transform: scale(1); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    }
+    .form-container {
+        margin: 0 auto; 
+        padding: 20px;
+        width: 100%;
+    }
+        .form-container h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: #234915; 
+            font-size: 36px; 
+            font-weight: 600; 
+            margin-bottom: 20px;
+        }
+
+    /* images html */
+    .image-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px; 
+    }
+    .formset-row {
+        background-color: #f7f9fc;
+        border-radius: 8px;
+        padding: 8px;
+    } 
+    .image-cell{
+        padding: 0.5rem;
+        vertical-align: middle;
+    }
+    .formset-adder {
+        margin-top: 1rem;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
     @media (max-width: 992px) {
 
