@@ -169,6 +169,18 @@
                     <ul class="nav flex-column">
                         {% if user.is_authenticated %}
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Search Reports Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Home
+                                <p class="small text-muted"> Website home landing page.</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'users-home' %}">
                                 <img 
                                     src="/static/img/empty-box.png" 
@@ -180,20 +192,6 @@
                                 <p class="small text-muted">View your profile</p>
                             </a>
                         </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">
-                                <img 
-                                    src="/static/img/empty-box.png" 
-                                    alt="Login Icon" 
-                                    class="sidebar-icon" 
-                                    width="20"
-                                    height="20"
-                                > Login
-                                <p class="small text-muted">Login to your account</p>
-                            </a>
-                        </li>
-                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">
                             <img 
@@ -207,18 +205,6 @@
                             </a>
                         </li>
                         <hr>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">
-                                <img 
-                                    src="/static/img/empty-box.png" 
-                                    alt="Search Reports Icon" 
-                                    class="sidebar-icon" 
-                                    width="20"
-                                    height="20"
-                                > Home
-                                <p class="small text-muted"> Website home landing page.</p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/reports/list">
                                 <img 
@@ -243,6 +229,21 @@
                                 <p class="small text-muted">Manage unclaimed reports.</p>
                             </a>
                         </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Login Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Login
+                                <p class="small text-muted">Login to your account</p>
+                            </a>
+                        </li>
+                        <hr>
+                        {% endif %}
                         {% if user.is_manager or user.is_staff %}
                             <hr>
                             <li class="nav-item">
@@ -295,7 +296,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/reports/report/">
+                                <a class="nav-link" href="/view-reports-page">
                                     <img 
                                         src="/static/img/empty-box.png" 
                                         alt="Reports Icon" 
