@@ -14,6 +14,7 @@ from .users import views as users
 from .views import HomeView, AdminPanelView, update_user_name, update_user_email, update_user_biography, update_user_affiliations
 from .views import ViewReportsPageView
 from . import views
+from .views import update_user_avatar
 
 urlpatterns = [
     # Redirects for the old site
@@ -71,6 +72,7 @@ urlpatterns = [
     path('users/update-email/<int:pk>/', update_user_email, name='update-user-email'),
     path('users/update-biography/<int:pk>/', update_user_biography, name='update-user-biography'),
     path('users/update-affiliations/<int:pk>/', update_user_affiliations, name='update-user-affiliations'),
+    path('users/update-avatar/<int:pk>/', update_user_avatar, name='update-user-avatar'),
     
     # url(r'^login/?$', users.login, name='login'),
     url(r'^login/?$', users.LoginView.as_view(), name='login'),
