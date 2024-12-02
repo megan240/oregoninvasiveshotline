@@ -173,8 +173,35 @@
         <div id="side-menu" class="side-menu-container" style="position: fixed; top: 0; left: 0; height: 100%; width: 250px; background-color: #ffffff; z-index: 1050; overflow-y: auto; box-shadow: 2px 0 5px rgba(0,0,0,0.1); display: none;">
             <div class="card border border-light side-menu">
                 <div class="card-body">
-                    <h5 class="card-title">Profile</h5>
+                    <h5 class="card-title">Menu</h5>
                     <ul class="nav flex-column">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users-home' %}">
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Profile Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Profile
+                                <p class="small text-muted">View your profile</p>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <img 
+                                    src="/static/img/empty-box.png" 
+                                    alt="Login Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Login
+                                <p class="small text-muted">Login to your account</p>
+                            </a>
+                        </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">
                             <img 
@@ -187,6 +214,7 @@
                                 <p class="small text-muted"> Logout of profile</p>
                             </a>
                         </li>
+                        <hr>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">
                                 <img 
