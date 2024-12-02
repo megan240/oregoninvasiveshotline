@@ -8,7 +8,7 @@
                 <img src="{{ user.get_avatar_url|default:'/static/img/avatar_placeholder.png' }}" alt="Profile Picture" class="img-fluid rounded-circle" width="100">
             </a>
             <div class="ml-4">
-                <h3 class="card-title">Hello, {{ user.first_name|default:"First" }}</h3>
+                <h3 class="card-title">Hello, <span id="profile-first-name">{{ user.first_name|default:"First" }}</span></h3>
                 <p class="card-text">Biography: <span id="biography-display">{{ user.biography|default:"You haven't entered a biography yet." }}</span></p>
                 <button class="btn btn-sm btn-outline-secondary mt-1" data-toggle="modal" data-target="#biographyChangeModal">Edit Biography</button>
                 <p class="card-text">Affiliations: <span id="affiliations-display">{{ user.affiliations|default:"You haven't entered any affiliations yet." }}</span></p>
@@ -146,6 +146,13 @@ document.getElementById('save-name-btn').addEventListener('click', function() {
     const lastName = document.getElementById('last-name-input').value;
     const userId = "{{ user.pk }}";
 
+    const nameRegex = /^[a-zA-Z\s'-]+$/;
+
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+        alert('Please enter a valid name. Only letters, spaces, hyphens, and apostrophes are allowed.');
+        return;
+    }
+
     console.log('Sending request to update name:', { firstName, lastName, userId });
 
     fetch(`/users/update-name/${userId}/`, {
@@ -165,6 +172,7 @@ document.getElementById('save-name-btn').addEventListener('click', function() {
         if (data.success) {
             document.getElementById('first-name-display').textContent = firstName;
             document.getElementById('last-name-display').textContent = lastName;
+            document.getElementById('profile-first-name').textContent = firstName;
             $('#nameChangeModal').modal('hide');
         } else {
             console.error('Error updating name:', data);
