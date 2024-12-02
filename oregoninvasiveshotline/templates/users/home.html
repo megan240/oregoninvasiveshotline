@@ -9,7 +9,7 @@
             </a>
             <div class="ml-4">
                 <h3 class="card-title">Hello, <span id="profile-first-name">{{ user.first_name|default:"First" }}</span></h3>
-                <button class="btn btn-sm btn-outline-secondary mt-1" data-toggle="modal" data-target="#avatarChangeModal">Change Profile Picture</button>
+                <button class="btn btn-sm btn-outline-secondary mt-1" data-toggle="modal" data-target="#avatarChangeModal">Change Picture</button>
                 <p class="card-text">Biography: <span id="biography-display">{{ user.biography|default:"You haven't entered a biography yet." }}</span></p>
                 <button class="btn btn-sm btn-outline-secondary mt-1" data-toggle="modal" data-target="#biographyChangeModal">Edit Biography</button>
                 <p class="card-text">Affiliations: <span id="affiliations-display">{{ user.affiliations|default:"You haven't entered any affiliations yet." }}</span></p>
@@ -36,7 +36,7 @@
         <div class="col-md-4">
             <div class="card border border-light h-100" style="height: 127px;">
                 <div class="card-body">
-                    <h5 class="card-title">Email & Password</h5>
+                    <h5 class="card-title">Account:</h5>
                     <p>Email: <span id="email-display">{{ user.email }}</span></p>
                     <button class="btn btn-sm btn-outline-secondary mt-3" data-toggle="modal" data-target="#emailChangeModal">Edit Email</button>
                     <button class="btn btn-sm btn-outline-secondary mt-2" data-toggle="modal" data-target="#passwordChangeModal">Edit Password</button>
@@ -47,7 +47,7 @@
         <div class="col-md-4">
             <div class="card border border-light h-100" style="height: 127px;">
                 <div class="card-body">
-                    <h5 class="card-title">User Roles</h5>
+                    <h5 class="card-title">User Roles:</h5>
                     <p>Manager: <img src="{% if user.is_active %}/static/img/check-box.png{% else %}/static/img/empty-box.png{% endif %}" alt="Manager Status" style="width: 20px; height: 20px;"></p>
                     <p>Admin: <img src="{% if user.is_staff %}/static/img/check-box.png{% else %}/static/img/empty-box.png{% endif %}" alt="Admin Status" style="width: 20px; height: 20px;"></p>
                 </div>
@@ -372,7 +372,7 @@ document.getElementById('save-avatar-btn').addEventListener('click', function() 
                         <p>Password requirements:</p>
                         <ul>
                             <li>Can’t be too similar to your other personal information.</li>
-                            <li>Must contain at least 12 characters.</li>
+                            <li>Must contain at least 8 characters.</li>
                             <li>Can’t be a commonly used password.</li>
                             <li>Can’t be entirely numeric.</li>
                         </ul>
