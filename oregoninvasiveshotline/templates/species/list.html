@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!---
     {% include '_admin_panel_nav.html' with nav_home=True nav_active='species' %}<hr>
-
+-->
     <h3 class="clearfix">
         Species
         <a href="{% url 'species-create' %}" class="pull-right btn btn-primary">Create a new species</a>
