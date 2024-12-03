@@ -132,6 +132,24 @@ def update_user_affiliations(request, pk):
             return JsonResponse({'success': False, 'error': str(e)})
     return JsonResponse({'success': False, 'error': 'Invalid request method'})
 
+@csrf_exempt
+def update_user_avatar(request, pk):
+    if request.method == 'POST':
+        try:
+            user = User.objects.get(pk=pk)
+            if 'avatar' in request.FILES:
+                user.photo = request.FILES['avatar']
+                user.save()
+                return JsonResponse({'success': True, 'avatar_url': user.photo.url})
+            else:
+                return JsonResponse({'success': False, 'error': 'No avatar file provided'})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'User not found'})
+        except Exception as e:
+            print('Error:', str(e))
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
 # View Reports Page Change 2
 @method_decorator(staff_member_required, name='dispatch')
 class ViewReportsPageView(TemplateView):
