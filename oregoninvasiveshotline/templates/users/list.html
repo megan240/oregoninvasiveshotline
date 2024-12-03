@@ -4,6 +4,7 @@
 <!--
     {% include '_admin_panel_nav.html' with nav_home=True nav_active='users' %}<hr>
 --->
+<div class="container">
     <h3 class="clearfix">
         User List
         <a href="{% url 'users-create' %}" class="pull-right btn btn-primary">Create User</a>
@@ -55,4 +56,5 @@
     {% else %}
         <div class="alert alert-warning">No users matching those search criteria were found.</div>
     {% endif %}
+</div>
 {% endblock %}
