@@ -15,7 +15,7 @@
                 <p class="card-text">Biography: <span id="biography-display">{{ user.biography|default:"You haven't entered a biography yet." }}</span></p>
                 <button class="btn btn-sm btn-outline-secondary mt-1" id="edit-biography-btn">Edit Biography</button>
                 <p class="card-text">Affiliations: <span id="affiliations-display">{{ user.affiliations|default:"You haven't entered any affiliations yet." }}</span></p>
-                <button class="btn btn-sm btn-outline-secondary mt-1" data-toggle="modal" data-target="#affiliationsChangeModal">Edit Affiliations</button>
+                <button class="btn btn-sm btn-outline-secondary mt-1" id="edit-affiliations-btn">Edit Affiliations</button>
                 <a href="{% url 'users-edit' user.pk %}" class="btn btn-outline-primary">Edit Profile</a>
                 <p class="mt-3"><small>Account created on: {{ user.date_joined|date:"F j, Y" }}</small></p>
             </div>
@@ -398,6 +398,63 @@ document.getElementById('edit-biography-btn').addEventListener('click', function
         }
 
         editButton.addEventListener('click', saveBiography);
+    }
+});
+
+document.getElementById('edit-affiliations-btn').addEventListener('click', function() {
+    const affiliationsDisplay = document.getElementById('affiliations-display');
+    const editButton = document.getElementById('edit-affiliations-btn');
+
+    if (editButton.textContent === 'Edit Affiliations') {
+        const affiliationsText = affiliationsDisplay.textContent;
+        affiliationsDisplay.innerHTML = `<textarea id="affiliations-input" class="form-control mt-2">${affiliationsText}</textarea>`;
+        editButton.textContent = 'Save';
+        const cancelButton = document.createElement('button');
+        cancelButton.textContent = 'Cancel';
+        cancelButton.className = 'btn btn-sm btn-outline-secondary mt-1';
+        cancelButton.id = 'cancel-affiliations-btn';
+        editButton.parentNode.insertBefore(cancelButton, editButton.nextSibling);
+
+        cancelButton.addEventListener('click', function() {
+            affiliationsDisplay.innerHTML = affiliationsText;
+            editButton.textContent = 'Edit Affiliations';
+            cancelButton.remove();
+            editButton.removeEventListener('click', saveAffiliations);
+        });
+
+        function saveAffiliations() {
+            if (editButton.textContent === 'Save') {
+                const affiliations = document.getElementById('affiliations-input').value;
+                const userId = "{{ user.pk }}";
+
+                fetch(`/users/update-affiliations/${userId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({
+                        affiliations: affiliations
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        affiliationsDisplay.textContent = affiliations;
+                        editButton.textContent = 'Edit Affiliations';
+                        cancelButton.remove();
+                        editButton.removeEventListener('click', saveAffiliations);
+                    } else {
+                        alert('Error updating affiliations: ' + (data.error || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    alert('An error occurred while updating the affiliations.');
+                });
+            }
+        }
+
+        editButton.addEventListener('click', saveAffiliations);
     }
 });
 </script>
