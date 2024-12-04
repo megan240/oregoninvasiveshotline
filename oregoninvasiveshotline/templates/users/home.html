@@ -10,10 +10,10 @@
             <a href="/users/avatar/{{ user.pk }}">
                 <img src="{{ user.get_avatar_url|default:'/static/img/avatar_placeholder.png' }}" alt="Profile Picture" class="img-fluid rounded-circle" width="150" style="margin: 5px;">
             </a>
-            <div style="margin-bottom: 10px;"></div>
+            <div style="margin-bottom: 20px;"></div>
             <div class="ml-4">
                 <button class="btn btn-sm btn-outline-secondary mt-1 mb-3 ml-2" data-toggle="modal" data-target="#avatarChangeModal">Change Picture</button>
-                <div style="margin-bottom: 20px;"></div>
+                <div style="margin-bottom: 10px;"></div>
                 <p class="card-text">Biography: <span id="biography-display">{{ user.biography|default:"You haven't entered a biography yet." }}</span></p>
                 <button class="btn btn-sm btn-outline-secondary mt-1" id="edit-biography-btn">Edit Biography</button>
                 <p class="card-text">Affiliations: <span id="affiliations-display">{{ user.affiliations|default:"You haven't entered any affiliations yet." }}</span></p>
@@ -163,6 +163,7 @@
             <div class="modal-body">
                 <form id="edit-avatar-form" enctype="multipart/form-data">
                     <input type="file" id="avatar-input" class="form-control mt-2" accept="image/*">
+                    <div style="margin-bottom: 20px;"></div>
                     <button class="btn btn-sm btn-primary mt-2" id="save-avatar-btn">Save</button>
                     <button class="btn btn-sm btn-secondary mt-2" data-dismiss="modal">Cancel</button>
                 </form>
