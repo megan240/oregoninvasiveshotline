@@ -91,7 +91,8 @@ class UserForm(forms.ModelForm):
 
         instance = super().save(*args, **kwargs)
 
-        # if we got a new photo resize it and convert it to a png
+        # if we got a new photo resize it and convert it to a png (why????????????????????)
+        """
         if self.cleaned_data.get("photo"):
             output_path = instance.photo.path + ".png"
             generate_thumbnail(instance.photo.path, output_path, width=256, height=256)
@@ -99,3 +100,5 @@ class UserForm(forms.ModelForm):
             self.instance.save()
 
         return instance
+        """
+        
