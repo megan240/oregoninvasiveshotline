@@ -351,6 +351,8 @@ document.getElementById('edit-biography-btn').addEventListener('click', function
     if (editButton.textContent === 'Edit Biography') {
         const biographyText = biographyDisplay.textContent;
         biographyDisplay.innerHTML = `<textarea id="biography-input" class="form-control mt-2">${biographyText}</textarea>`;
+        const textarea = document.getElementById('biography-input');
+        textarea.style.height = textarea.scrollHeight + 'px';
         editButton.textContent = 'Save';
         const cancelButton = document.createElement('button');
         cancelButton.textContent = 'Cancel';
@@ -408,6 +410,8 @@ document.getElementById('edit-affiliations-btn').addEventListener('click', funct
     if (editButton.textContent === 'Edit Affiliations') {
         const affiliationsText = affiliationsDisplay.textContent;
         affiliationsDisplay.innerHTML = `<textarea id="affiliations-input" class="form-control mt-2">${affiliationsText}</textarea>`;
+        const textarea = document.getElementById('affiliations-input');
+        textarea.style.height = textarea.scrollHeight + 'px';
         editButton.textContent = 'Save';
         const cancelButton = document.createElement('button');
         cancelButton.textContent = 'Cancel';
