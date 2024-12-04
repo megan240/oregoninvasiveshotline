@@ -201,9 +201,8 @@ document.getElementById('save-name-btn').addEventListener('click', function() {
     .then(data => {
         console.log('Response from server:', data);
         if (data.success) {
-            document.getElementById('first-name-display').textContent = firstName;
-            document.getElementById('last-name-display').textContent = lastName;
             document.getElementById('profile-first-name').textContent = firstName;
+            document.getElementById('name-display').textContent = `${firstName} ${lastName}`;
             $('#nameChangeModal').modal('hide');
         } else {
             console.error('Error updating name:', data);
