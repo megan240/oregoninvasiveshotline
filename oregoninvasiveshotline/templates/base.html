@@ -111,9 +111,6 @@
                 <li>
                     <a href="{% url 'reports-create' %}" class="navbaranchor">Report Now</a>
                 </li>
-                <li>
-                    <span class="navbaranchor">1-866-468-2337</span>
-                </li>
             </ul>
         </nav>
         <header id="navbar-two">
@@ -277,6 +274,14 @@
                                     height="20"
                                 > Oregon Invasive Species Council
                             </a>
+                        </li>
+                        <hr>
+                        <!-- Add the phone number and "Report now!" text under the second separator -->
+                        <li class="nav-item">
+                            <span class="nav-link" style="cursor: default; pointer-events: none;">1-866-468-2337</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link" style="cursor: default; pointer-events: none;">Report now!</span>
                         </li>
                         {% endif %}
                         {% if user.is_manager or user.is_staff %}
