@@ -36,7 +36,7 @@ class Report(models.Model):
 
     description = models.TextField(verbose_name="Provide a description of your find")
     location = models.TextField(
-        verbose_name="Provide a description of the area where species was found"
+        verbose_name="Provide a description of the area where the species was found"
         
     )
     has_specimen = models.BooleanField(default=False, verbose_name="Do you have a physical specimen?")

@@ -4,10 +4,13 @@
 <!--
     {% include '_admin_panel_nav.html' with nav_home=True nav_active='categories' %}<hr>
 -->
-    <h3 class="clearfix">
+<link rel="stylesheet" href="../../static/css/list.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> 
+  
+    <h2 class="clearfix">
         Categories
-        <a href="{% url 'categories-create' %}" class="pull-right btn btn-primary">Create a new category</a>
-    </h3>
+        <a href="{% url 'categories-create' %}" class="list-btn-create">Create a new category</a>
+    </h2>
 
     <table class="table table-condensed table-striped">
         <thead>
@@ -22,7 +25,7 @@
                     <td><a href="{% url 'categories-detail' category.pk %}">{{ category.name }}</a></td>
                     <td class="text-right">
                         <a href="{% url 'categories-delete' category.pk %}" class="text-danger">
-                            <span class="glyphicon glyphicon-trash"></span>
+                            <span class="fa fa-trash"></span>
                         </a>
                     </td>
                 </tr>

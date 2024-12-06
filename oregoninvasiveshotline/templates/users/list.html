@@ -4,22 +4,24 @@
 <!--
     {% include '_admin_panel_nav.html' with nav_home=True nav_active='users' %}<hr>
 --->
-<div class="container">
-    <h3 class="clearfix">
-        User List
-        <a href="{% url 'users-create' %}" class="pull-right btn btn-primary">Create User</a>
-    </h3>
+    <link rel="stylesheet" href="../../static/css/list.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <form class="form-inline" style="margin: 15px 0;">
+    <h2 class="clearfix">
+        User List
+        <a href="{% url 'users-create' %}" class="list-btn-create">Create User</a>
+    </h2>
+
+    <form class="search-form">
         {{ form|bootstrap }}
-        <div class="pull-right">
-            <input type="submit" value="Search" class="btn btn-primary"/>
-            <a href="{% url 'users-list' %}" class="btn btn-warning">Reset</a>
+        <div class="form-actions">
+            <input type="submit" value="Search" class="btn-srch"/>
+            <a href="{% url 'users-list' %}" class="btn-edt">Reset</a>
         </div>
     </form>
 
     {% if users %}
-        <table class="table table-condensed table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -42,10 +44,10 @@
                         </td>
                         <td class="text-right">
                             <a href="{% url 'users-edit' user.pk %}"
-                               title="Edit this user's info"><span class="glyphicon glyphicon-edit"></span></a>
+                               title="Edit this user's info"><span class="fa fa-edit"></span></a>
                             &nbsp;
                             <a href="{% url 'users-delete' user.pk %}" title="Delete this user"
-                               class="text-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                               class="text-danger"><span class="fa fa-trash"></span></a>
                         </td>
                     </tr>
                 {% endfor %}
