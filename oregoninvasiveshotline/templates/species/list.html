@@ -4,24 +4,27 @@
 <!---
     {% include '_admin_panel_nav.html' with nav_home=True nav_active='species' %}<hr>
 -->
-    <h3 class="clearfix">
-        Species
-        <a href="{% url 'species-create' %}" class="pull-right btn btn-primary">Create a new species</a>
-    </h3>
+<link rel="stylesheet" href="../../static/css/list.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <form class="form-inline" style="margin: 15px 0;">
+    <h2 class="clearfix">
+        Species
+        <a href="{% url 'species-create' %}" class="list-btn-create">Create a new species</a>
+    </h2>
+
+    <form class="search-form">
         {{ form.non_field_errors }}
         {{ form.q|bootstrap }}
         {{ form.order_by|bootstrap }}
         {{ form.order|bootstrap }}
-        <div class="pull-right">
-            <input type="submit" name="submit" value="Search" class="btn btn-primary" />
-            <a class="btn btn-warning" href="{% url 'species-list' %}">Reset</a>
+        <div class="form-actions">
+            <input type="submit" name="submit" value="Search" class="btn-srch" />
+            <a class="btn-edt" href="{% url 'species-list' %}">Reset</a>
         </div>
     </form>
-
+    
     {% if all_species %}
-        <table class="table table-condensed table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -48,10 +51,10 @@
                         </td>
                         <td class="text-right">
                             <a href="{% url 'species-detail' species.pk %}"
-                               title="Edit this species"><span class="glyphicon glyphicon-edit"></span></a>
+                               title="Edit this species"><span class="fa fa-edit"></span></a>
                             &nbsp;
                             <a href="{% url 'species-delete' species.pk %}"
-                               class="text-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                               class="text-danger"><span class="fa fa-trash"></span></a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -135,9 +135,11 @@
     background-color: transparent; 
     text-align: center;
     transition: all 0.3s ease; 
+    text-decoration: none;
 }
     .headline-btn-down:hover {
         color: white; 
+        text-decoration: none;
     }
 .box-container {
     display: flex;
