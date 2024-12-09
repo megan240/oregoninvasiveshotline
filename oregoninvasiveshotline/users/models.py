@@ -44,7 +44,7 @@ class User(AbstractBaseUser):
     def from_signature(cls, signature):
         try:
             signer = TimestampSigner()
-            value = signer.unsign(signature, max_age=60 * 60 * 24)
+            value = signer.unsign(signature, max_age=60 * 60 * 24 * 7)
             return cls.objects.get(email=value)
         except SignatureExpired:
             return None

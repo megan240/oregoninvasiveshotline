@@ -322,6 +322,9 @@ class ReportForm(forms.ModelForm):
         report.county = County.objects.filter(the_geom__intersects=report.point).first()
         report.city = City.objects.filter(the_geom__intersects=report.point).first()
 
+        if not report.county or not report.city:
+            raise forms.ValidationError("Reports can only be made within Oregon and Clark County, WA.")
+
         super().save(*args, **kwargs)
 
         questions = self.cleaned_data.get('questions')
