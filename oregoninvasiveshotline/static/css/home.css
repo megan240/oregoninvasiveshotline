@@ -1,0 +1,169 @@
+/* Text designs*/
+.midline-heading {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    font-size: 2.0em; 
+    line-height: 1.2;
+    color: #508228;
+    margin-bottom: 30px;
+}  
+    .midiline-text {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.9em; 
+        color: #777; 
+        padding: 10px;
+        
+    }
+    .heading-map {
+        font-family: 'Arial', sans-serif; 
+        font-size: 2.0em; 
+        line-height: 1.1; 
+        color: #dcdcdc; 
+        margin-bottom: 0 auto; 
+        text-align: center; 
+    }
+    .map {/* */
+        font-family: 'Arial', sans-serif; 
+        font-size: 1.3em; 
+        line-height: 1.3; 
+        color: #423e3e; 
+        margin-bottom: 15px; 
+        font-weight: bold;
+        text-align: center; 
+    }
+    .map-text {/* */
+        font-family: 'Arial', sans-serif;
+        font-size: 1.1em; 
+        color: #000000; 
+        padding: 10px;
+        
+    }
+    .footer-text {
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+        font-size: 1.5em; 
+        color: #505050; 
+        text-align: center;
+        
+    }
+    .main-text a.green-link {
+        font-weight: bold; 
+        font-size: 1.4em; 
+        color: #4b8a28; 
+        text-decoration: none; 
+         
+    }
+
+    .main-text a.green-link:hover {
+        text-decoration: underline; 
+    }
+
+    .sub-text {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.1em; 
+        color: #777; 
+        
+    }
+    .headline-text {
+        font-family: 'Arial', sans-serif; 
+        font-size: 2.0em; 
+        line-height: 1.1;
+        color: white;
+        margin: 15px; 
+    }
+    .report-btn-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px; 
+    }
+    .note-text {
+        font-size: 15px;
+        font-weight: bold;
+        color: black;
+    }
+
+/* Text designs*/
+.headline-container {
+    display: flex; 
+    margin-top: 0; 
+    width: 100%; 
+}
+
+.headline-left-inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.modern-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto; 
+    padding: 15px;
+    text-align: center;
+    background-color: #f7f7f7;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    margin: 20px;
+}
+/* Want to make report button */
+.btn-home {
+    background-color: #34912b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+    .btn-home:hover {
+        background-color: #2a7f21;
+    }
+/* About hotline button */
+.headline-btn-down {
+    display: inline-block;
+    padding: 10px 5px 15px; 
+    margin: 5px;
+    font-size: 16px;
+    color: white; 
+    width: 90%;
+    border: 3px solid white; 
+    border-radius: 5px;
+    background-color: transparent; 
+    text-align: center;
+    transition: all 0.3s ease; 
+    text-decoration: none;
+}
+    .headline-btn-down:hover {
+        color: white; 
+        text-decoration: none;
+    }
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    justify-content: center;
+    padding: 10px;
+}
+/* Midline Info Section */
+.midline-info {
+    max-width: 100%;
+    margin: 20px 0; 
+}
+    .midline-info h1 {
+        color: #2f2f2f; 
+        font-size: 1.7em; 
+        margin-bottom: 15px; 
+        font-weight: bold;
+        line-height: 1.2;
+    }
+    .midline-info p {
+        color: #666; 
+        font-size: 17px; 
+        line-height: 1.6;
+        margin-bottom: 15px; 
+    }
+

@@ -67,13 +67,20 @@ class ReportSearchForm(SearchForm):
         required=False,
         label='',
         choices=get_category_choices,
-        widget=forms.SelectMultiple(attrs={'title': 'Categories'})
+        widget=forms.SelectMultiple(attrs={
+            'title': 'Categories',
+            'style': 'width: 90%;',
+            'name': 'categories-form'
+        })
     )
     counties = forms.MultipleChoiceField(
         required=False,
         label='',
         choices=get_county_choices,
-        widget=forms.SelectMultiple(attrs={'title': 'Counties'})
+        widget=forms.SelectMultiple(attrs={
+            'title': 'Counties',
+            'name': 'counties-form'
+        })
     )
     cities = forms.MultipleChoiceField(
         required=False,
@@ -251,8 +258,7 @@ class ReportForm(forms.ModelForm):
         required=False,
         widget=forms.Textarea,
         label=(
-            'Do you have additional questions for the invasive species expert who will review '
-            'this report?'
+            'Do you have  any additional questions?'
         ),
     )
 
@@ -267,7 +273,13 @@ class ReportForm(forms.ModelForm):
             'has_specimen',
         ]
         widgets = {
-            'point': forms.widgets.HiddenInput
+            'point': forms.widgets.HiddenInput,
+            'location': forms.Textarea(attrs={
+                'class': 'form-control',
+                'style': 'resize: auto; overflow: hidden;',
+                'rows': 3,  
+                'placeholder': 'Example: name the road, trail or specific landmarks near the site whether the species was found. Describe the geographic location, such as in a ditch, on a hillside or in a streambed. Enter GPS coordinates HERE.'
+            }),
         }
 
     def __init__(self, *args, **kwargs):

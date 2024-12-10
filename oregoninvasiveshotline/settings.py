@@ -160,16 +160,25 @@ INSTALLED_APPS = [
     "django.contrib.gis"
 ]
 
+# Clickjacking protection
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.http.ConditionalGetMiddleware"
+    "django.middleware.http.ConditionalGetMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
+
+SECURE_BROWSER_XSS_FILTER = True
+X_CONTENT_TYPE_OPTIONS = 'nosniff'
+# Add Content-Security-Policy header
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_FRAME_ANCESTORS = ("'self'",)
 
 DATABASES = {
     'default': {
@@ -297,3 +306,5 @@ processors.set_smtp_parameters(config, settings)
 
 # Configure Google Maps API key
 GOOGLE_API_KEY = processors.get_secret_value(config, 'GOOGLE_API_KEY')
+
+X_FRAME_OPTIONS = 'SAMEORIGIN' # Allow the same origin to frame this site

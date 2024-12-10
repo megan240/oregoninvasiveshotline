@@ -1,12 +1,39 @@
-
-
-  <div id="search-input-group" class="input-group">
+{# This is the search box on search reports page #}
+<div id="search-input-group" class="input-group">
+  <div id="Search-Reports-Field">
+    <label for="q" class="search-box-label">Search Reports</label>
     <input name="q" id="id_q" type="search"
-           class="form-control"
-           value="{{ form.q.value|default:'' }}"
-           placeholder="Enter category, county, species, or other keyword(s)" />
-    <div class="input-group-btn">
-      <input type="submit" value="Search" name="submit" class="btn btn-primary">
-      <a href="{% url 'reports-list' %}" class="btn btn-warning">Reset</a>
-    </div>
+      class="report-search-box"
+      value="{{ form.q.value|default:'' }}"
+      placeholder="   Enter category, county, species, or other keyword(s)" 
+    />
   </div>
+  <label for="categories-form" class="category-box-label">Categories</label>
+  <a href="{% url 'reports-help' %}?modal=true"
+    class="modal-remote help"
+    title="Category legend">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    <span class="sr-only">[?]</span>
+  </a>
+  {{form.categories}}
+  <label for="counties-form" class="county-box-label">Counties</label>
+  {{form.counties}}
+  <label for="cities-form" class="county-box-label">Cities</label>
+  {{form.cities}}
+  <div id="Search-Submit-Button-div">
+    <input id="Search-Submit-Btn" type="submit" value="Search" name="submit" class="search-button"/>
+  </div>
+  {% if reports %}
+    <div id="map-canvas"></div>
+  {% else %}
+    <div class="alert alert-warning">
+        <p>
+            No matching reports found.
+        </p>
+        <p>
+            You can <a href="{{ subscription_url }}">subscribe to this search</a> to be
+            alerted when a matching report is added.
+        </p>
+    </div>
+{% endif %}
+</div>

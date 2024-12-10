@@ -7,38 +7,39 @@
 {% block body_class %}white{% endblock %}
 
 {% block content %}
-    <div class="row" id="headline">
-        <div class="col-md-5" id="headline-info">
-            <!-- this horrible inline css is brought to you by http://howtocenterincss.com/ -->
-            <div style="display: table; height: 500px;">
-                <div style="display: table-cell; vertical-align: middle;">
-                    <div style="margin-left: auto; margin-right: auto;">
-                        {% getcontent 'headline' %}
+
+<link rel="stylesheet" href=".../../../static/css/home.css">
+<!-- Top half -->
+<div class="headline-container" id="headline">
+    <div class="col-md-4" id="headline-info">
+        <!-- left side, headline + report button + down button -->
+        <div class="headline-left-inner">
+            <div class="headline-text">{% getcontent 'headline' %}</div>
+                <div class="modern-section">
+                        <p class="report-btn-text">Need To Make a Report?</p>
                         <div id="headline-buttons">
-                            <a class="btn btn-warning" href="{% url 'reports-create' %}">Report Now</a>
-                            <a class="btn btn-success" href="{% url 'reports-list' %}">Search Reports</a>
-                            <a id="headline-buttons-info" class="btn btn-primary" href="#">
-                                About the Hotline <span class="arrow">&#8595;</span>
-                            </a>
-                        </div>
+                            <a class="btn-home" href="{% url 'reports-create' %}">Report Now</a>   
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-7 hidden-sm hidden-xs" id="headline-map">
-            <div id="map-canvas" style="cursor: pointer; height: 500px;"></div>
+                <a id="headline-buttons-info" class="headline-btn-down" href="#">
+                    About the Hotline <span class="arrow">&#8595;</span> </a>
         </div>
     </div>
-
-    <div class="row" id="sponsors">
-        <a href="http://pdx.edu"><img src="{% static 'img/PSU.gif' %}"></a>
-        <a href="http://www.cascadepacific.org/western-invasives-network"><img src="{% static 'img/WIN.jpg' %}"></a>
-        <a href="http://www.oregoninvasivespeciescouncil.org/"><img src="{% static 'img/OISC.png' %}"></a>
+        <!-- right side, map -->
+        <div class="col-md-8 hidden-sm hidden-xs" id="headline-map">
+            <div id="map-canvas" style="cursor: pointer; height: 100%; width: 100%; margin: 0 auto;"></div>
+        </div>
+</div>
+<!-- Middle, hotline info -->
+<div id="midline">
+    <div class="midline-info">
+            {% getcontent 'midline' %} 
     </div>
-
-    <div id="midline">
-        {% getcontent 'midline' %}
-
+    <div class="modern-section">
+        <p class="note-text"><strong><u>*Note that while your contact information remains confidential, public access is granted to <bold>ONLY</bold> report details and photos under CC-BY Licensing.</strong> </u> </p>
+    </div>
+    <!-- learning boxes-->
+    <div class="box-container">
         <div class="midline-block">
             {% getcontent 'midline-block1' %}
         </div><div class="midline-block longest">
@@ -47,8 +48,9 @@
             {% getcontent 'midline-block3' %}
         </div>
     </div>
+</div>
+{% getcontent 'midline-footer' %}
 
-    {% getcontent 'midline-footer' %}
 {% endblock %}
 
 {% block js %}

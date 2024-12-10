@@ -7,86 +7,89 @@
 Report an Invader
 {% endblock %}
 {% block content %}
-<h3>Report an Invader</h3>
+<div class="form-container">
 
-<p>Use this form to report a potential invasive species you've found in Oregon or to request help in identifying an unknown species. The information you provide will assist invasive species experts in positively identifying your find. Please try to be as complete and detailed as possible.</p>
+    <h1>Report Invader Form</h1>
+    <div class="alert" style="background-color: rgb(231, 255, 212);">
+        <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span>
+        Please note, the descriptive in your report may become viewable by the public. Contact information will only be visible to you and Hotline Managers, IT WIILL NOT be made public.
+    </div>
+    <p><em>* indicates the field is required</em></p>
 
-<p class="alert alert-warning">Please note, the descriptive information in your report may become viewable by the public. Contact information will only be visible to you and Hotline managers, it will not be made public</p>
-
-<p><em>* indicates the field is required</em></p>
-<form method="post" enctype="multipart/form-data" id="reports-form">
-    {% if form.errors or formset.errors %}
+    <form method="post" enctype="multipart/form-data" id="reports-form">
+        {% if form.errors or formset.errors %}
         <div class="alert alert-danger">
             Please correct the errors below.
         </div>
-    {% endif %}
-    {% csrf_token %}
-    <fieldset>
-        <legend>Your Contact Info</legend>
+        {% endif %}
+        {% csrf_token %}
+        <!-- First half, contact and location info-->
         <div class="row">
-            <div class="col-md-4">
+            <fieldset class="col-md-5">  
+                <legend>Your Contact Info</legend>
                 {{ form.first_name|bootstrap }}
-            </div>
-            <div class="col-md-4">
+                <br>
                 {{ form.last_name|bootstrap }}
-            </div>
-            <div class="col-md-4">
+                <br>
                 {{ form.phone|bootstrap }}
-            </div>
+                <br>
+                {{ form.email|bootstrap }}
+                <br>
+                {{ form.has_completed_ofpd|bootstrap }}
+                
+            </fieldset>
+            <fieldset class="col-md-7">
+                <legend>Location</legend>
+                <p>Drag the pin where you found the specimen (zoom in to provide the most accurate location) or enter an address or nearby intersection below:</p>
+                <p>
+                <div class="form-group address">
+                    <label>Address</label>
+                    <input class="form-control" type="text" id="address">
+                    <span style="display:none" class="loader"></span>
+                    </input>
+                </div>
+                </p>
+
+                {% if form.point.errors %}
+                    <div class="alert alert-danger">
+                        Please drag the pin to the location where the specimen was found.
+                    </div>
+                {% endif %}
+                {{ form.point }}
+                <div id="map-canvas" class="scroll-space-on-mobile" style="height:300px; width: 100%; margin-bottom: 5px; margin-top: 0px;"></div>
+                <br />
+                {{ form.location|bootstrap }}
+            </fieldset>
         </div>
-        {{ form.email|bootstrap }}
-        {{ form.has_completed_ofpd|bootstrap }}
-    </fieldset>
+        <!-- Second half, species identification and image input-->
+        <div class="row">
+            <fieldset class="col-md-5">
+                <legend>Identification</legend>
+                {{ form.has_specimen|bootstrap }}
+                {{ form.reported_category|bootstrap }}
+                <div id="reported-species">
+                    {{ form.reported_species|bootstrap }}
+                </div>
+                {{ form.description|bootstrap }}
+            </fieldset>
 
-
-    <fieldset>
-        <legend>Location</legend>
-        <p>Drag the pin where you found the specimen (zoom in to provide the most accurate location) or enter an address or nearby intersection below:</p>
-        {% if form.non_field_errors %}
-            <div class="alert alert-danger">
-                {{ form.non_field_errors }}
-            </div>
-        {% endif %}
-        <p>
-          <div class="form-group address">
-            <label>Address</label>
-            <input class="form-control" type="text" id="address">
-              <span style="display:none" class="loader"></span>
-            </input>
-          </div>
-        </p>
-        {% if form.point.errors %}
-            <div class="alert alert-danger">
-                Please drag the pin to the location where the specimen was found.
-            </div>
-        {% endif %}
-        {{ form.point }}
-        <div id="map-canvas" class="scroll-space-on-mobile" style="height:500px"></div>
-        <br />
-        {{ form.location|bootstrap }}
-    </fieldset>
-
-    <fieldset>
-        <legend>Identification</legend>
-        {{ form.has_specimen|bootstrap }}
-        {{ form.reported_category|bootstrap }}
-        <div id="reported-species">
-            {{ form.reported_species|bootstrap }}
+            <fieldset class="col-md-7">
+                {% include '_images.html' %}
+                
+            </fieldset> 
         </div>
-        {{ form.description|bootstrap }}
-    </fieldset>
+        <fieldset>
+            <legend>Questions?</legend>
+            {{ form.questions|bootstrap }}
+        </fieldset>
 
-    {% include '_images.html' %}
+    
 
-    <fieldset>
-        <legend>Questions?</legend>
-        {{ form.questions|bootstrap }}
-    </fieldset>
-
-    <input type="submit" name="submit" value="Submit" id="submit" class="btn btn-primary"/>
-    <a href="{% url 'reports-list' %}" class="btn btn-warning">Cancel</a>
-    <div id="previews"></div>
-</form>
+        <input type="submit" name="submit" value="Submit" id="submit" class="btn-submit"/>
+        <a href="{% url 'reports-list' %}" class="btn-cancel">Cancel</a>
+        <div id="previews"></div>
+    </form>
+</div>
 {% endblock %}
 
 {% block js %}

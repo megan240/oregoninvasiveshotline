@@ -2,9 +2,21 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import get_user_model
+import json
 
 from .reports.models import Report
 from .reports.serializers import ReportSerializer
+
+
+User = get_user_model()
+
+# View Reports Page Change 1
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
 
 
 class HomeView(APIView):
@@ -49,3 +61,96 @@ class AdminPanelView(APIView):
 
     def get(self, request):
         return Response({})
+
+
+@csrf_exempt
+def update_user_name(request, pk):
+    if request.method == 'POST':
+        try:
+            user = User.objects.get(pk=pk)
+            data = json.loads(request.body)
+            print('Received data:', data)
+            user.first_name = data.get('first_name', user.first_name)
+            user.last_name = data.get('last_name', user.last_name)
+            user.save()
+            return JsonResponse({'success': True})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'User not found'})
+        except Exception as e:
+            print('Error:', str(e))
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+@csrf_exempt
+def update_user_email(request, pk):
+    if request.method == 'POST':
+        try:
+            user = User.objects.get(pk=pk)
+            data = json.loads(request.body)
+            print('Received data:', data)
+            user.email = data.get('email', user.email)
+            user.save()
+            return JsonResponse({'success': True})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'User not found'})
+        except Exception as e:
+            print('Error:', str(e))
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+@csrf_exempt
+def update_user_biography(request, pk):
+    if request.method == 'POST':
+        try:
+            user = User.objects.get(pk=pk)
+            data = json.loads(request.body)
+            print('Received data:', data)
+            user.biography = data.get('biography', user.biography)
+            user.save()
+            return JsonResponse({'success': True})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'User not found'})
+        except Exception as e:
+            print('Error:', str(e))
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+@csrf_exempt
+def update_user_affiliations(request, pk):
+    if request.method == 'POST':
+        try:
+            user = User.objects.get(pk=pk)
+            data = json.loads(request.body)
+            print('Received data:', data)
+            user.affiliations = data.get('affiliations', user.affiliations)
+            user.save()
+            return JsonResponse({'success': True})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'User not found'})
+        except Exception as e:
+            print('Error:', str(e))
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+@csrf_exempt
+def update_user_avatar(request, pk):
+    if request.method == 'POST':
+        try:
+            user = User.objects.get(pk=pk)
+            if 'avatar' in request.FILES:
+                user.photo = request.FILES['avatar']
+                user.save()
+                return JsonResponse({'success': True, 'avatar_url': user.photo.url})
+            else:
+                return JsonResponse({'success': False, 'error': 'No avatar file provided'})
+        except User.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'User not found'})
+        except Exception as e:
+            print('Error:', str(e))
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+# View Reports Page Change 2
+@method_decorator(staff_member_required, name='dispatch')
+class ViewReportsPageView(TemplateView):
+    template_name = 'view_reports_page.html'

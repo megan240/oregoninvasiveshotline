@@ -1,22 +1,21 @@
+
 <fieldset id="images">
     <legend>Images</legend>
-    <p>
-      <em>
-        To add photos, click the button below and browse for the image on your computer.
-        You can add multiple pictures by clicking the "Add Another Image" link.
+    <div class="alert" style="background-color: rgb(255, 221, 190);">
+        <span class="closebtn"  onclick="this.parentElement.style.display='none';"></span>
         Please note that images uploaded may be publicly accessible under
         <a href="https://wellcome.org/grant-funding/guidance/open-access-guidance/creative-commons-attribution-licence-cc">CC-BY</a>
-        licensing guidelines.
-      </em>
-    </p>
-    <p class="alert alert-warning">The total size of your images when uploading must not exceed 16MB.</p>
+        licensing guidelines. To add photos, click the button below and browse for the image on your computer/phone.
+    </div>
+    <p><em>* The total size of your images when uploading must not exceed 16MB.</em></p>
+    
     <div class="formset">
         {{ formset.management_form }}
         <!-- the first form yielded is the empty form. We use that as a template for the JS, so make it hidden -->
-        <table class="table table-striped2 table-condensed">
+        <table class="table table-striped table-condensed image-table">
             {% for subform in formset.iter_with_empty_form_first %}
                 <tr class="formset-row" {% if forloop.counter0 == 0%}style="display:none"{% endif %}>
-                    <td>
+                    <td class="image-cell">
                         {% if subform.image.errors %}
                             <div class="text-danger">
                                 {{ subform.image.errors }}
@@ -35,6 +34,6 @@
                 </tr>
             {% endfor %}
         </table>
-        <a href="#" class="formset-adder">Add Another Image</a>
+        <button type="button" class="btn btn-outline-primary formset-adder">+ Add Another Image</button>
     </div>
 </fieldset>

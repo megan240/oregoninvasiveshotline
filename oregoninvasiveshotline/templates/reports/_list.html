@@ -1,100 +1,60 @@
-
-
-<div class="row">
-  <div class="col-md-12">
-    <div style="margin: 1em 0em 0.5em 0em; border-top: 1px solid #eee;"></div>
-  </div>
-</div>
-
-<div class="row">
-    <div class="col-md-7">
-        <br>
-
-        {% if reports %}
-            <div id="map-canvas" style="height: 550px;"></div>
-        {% else %}
-            <div class="alert alert-warning">
-                <p>
-                    No matching reports found.
-                </p>
-                <p>
-                    You can <a href="{{ subscription_url }}">subscribe to this search</a> to be
-                    alerted when a matching report is added.
-                </p>
-            </div>
-        {% endif %}
-        <br>
-
-        {% include 'reports/_legend_dialog.html' %}
-    </div>
-
-    <div class="col-md-5 {% if not reports %}hidden{% endif %}">
-
-        {% include 'reports/search/_sort.html' %}
-
-        <table class="table reports-table double-zebra">
-            <tbody>
-                {% for report in reports %}
-                    <tr class="{{ report.css_class }}">
-                        <td class="reports-table-img" rowspan="2">
-                            <a href="#map-canvas" class="report-location-click" data-report-index="{{ forloop.counter0 }}">
-                                <img src="{{ report.image_url|default:report.icon_url }}">
-                            </a>
-                        </td>
-
-                        <td colspan="2" style="vertical-align: bottom; width: 100%;">
-                            <a class="strong" href="{% url 'reports-detail' report.pk %}">
-                                <small>#{{ report.pk }}:</small>
-                                {{ report.species|default:report.category }}
-                            </a>
-
-                            {% if report.species %}
-                                <small>({{ report.category }})</small>
-                            {% endif %}
-
-                            &mdash; {{ report.created_on }}
-
-                            {% if user.is_active %}
-                                <span class="pull-right">
-                                    {% if report.is_public %}
-                                        <span title="Public" class="glyphicon glyphicon-eye-open"></span>
-                                    {% endif %}
-                                    {% if report.actual_species %}
-                                        <span title="Confirmed" class="glyphicon glyphicon-ok"></span>
-                                    {% endif %}
-                                    {% if report.is_archived %}
-                                        <span title="Archived" class="glyphicon glyphicon-oil"></span>
-                                    {% endif %}
-                                    {% if report.claimed_by_id %}
-                                        <span title="Claimed by {{ report.claimed_by }}"
-                                              class="glyphicon glyphicon-user {% if report.claimed_by_id == request.user.pk %}text-info strong{% endif %}">
-                                        </span>
-                                    {% endif %}
-                                </span>
-                            {% endif %}
-                        </td>
-                    </tr>
-
-                    <tr class="{{ report.css_class }}">
-                        <td>
-                            {{ report.county|default:'Not in OR/WA' }}
-                            {% if report.city %}
-                                , {{ report.city }}
-                            {% endif %}
-                        </td>
-                        <td class="text-right">
-                          <em title="Early Detection and Rapid Response">EDRR Status:</em>
-                          {% if report.edrr_status %}
-                            {{ report.edrr_status }}
-                          {% else %}
-                            &mdash;
-                          {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
+<div id="Report-Zebra-Database-Listing">
+    {% include 'reports/_legend_dialog.html' %}
+    <div>
+        <p class="report-zebra-title">Reports</p>
         {% include '_pagination.html' with items=page %}
+    </div>
+    <div class="col-md-5 {% if not reports %}hidden{% endif %}">        
+        <div>
+            {% if items.number %}
+                Page {{ items.number }} of {{ items.paginator.num_pages }}
+            {% endif %}
+        </div>
+    </div>
+    <div id="listing-box-container">
+        
+        {% for report in reports %}
+        <div class="listing-report-template">
+            <table class="single-report-table-card">
+                <tbody>
+                    <tr class="database-row-tr">
+                        <td class="img-cell-table" rowspan="4" colspan="1">
+                            <!-- picture -->
+                            <a href="#map-canvas" class="report-location-click" data-report-index="{{ forloop.counter0 }}">
+                                    <img 
+                                    src="{{ report.image_url|default:report.icon_url }}"
+                                    alt="Picture of {{report.title}}"
+                                    width="70"
+                                    height="70">
+                            </a>
+                        </td>
+                        <td class="species-title-cell-table top-tr-right" rowspan="1" colspan="3">
+                            <h2>{{ report.species|default:report.category }}</h2>
+                        </td>
+                    </tr>
+                    <tr class="database-row-tr">
+                        <td class="category-cell-data" rowspan="1" colspan="3">
+                            <p class="category-cell-table-label">category:</p>
+                            <p class="category-cell-data">{{ report.category }}</p>
+                        </td>
+                    </tr>
+                    <tr class="database-row-tr">
+                        <td class="county-cell-data" rowspan="1" colspan="3">
+                            <p class="county-cell-table-label">county      :</p>
+                            <p class="county-cell-data">{{ report.county|default:'Not in OR/WA' }}</p>
+                        </td>
+                    </tr>
+                    <tr class="database-row-tr">
+                        <td class="report-data-cell-table publish-date-cell-table" rowspan="1" colspan="3">
+                            <a href="{% url 'reports-detail' report.pk %}">
+                                <p class="small-report-info">report: #{{ report.pk }}</p>
+                            </a>
+                            <p class="small-report-info-date">publish date - {{ report.created_on }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
     </div>
 </div>
