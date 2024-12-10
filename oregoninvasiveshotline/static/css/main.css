@@ -12,7 +12,7 @@
 
 html,
 body {
-    background-color: #3a7a16;
+    background-color: var(--inv-green);
     font-family: Verdana, Geneva, sans-serif;
 }
 
