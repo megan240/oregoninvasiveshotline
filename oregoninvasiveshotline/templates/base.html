@@ -115,50 +115,16 @@
         </nav>
         <header id="navbar-two">
             
-                <li style="float: left; margin-right: 20px;">
+                <li style="display: block;float: left; margin-right: 20px;">
                     <button id="toggle-sidebar-two" class="navbaranchor" style="background: none; border: none; margin-left: -20px;">
                         <img 
-                            src="/static/img/menu-burger-horizontal-svgrepo-com.png" 
+                            src="/static/img/list-light.png" 
                             alt="Toggle Sidebar" 
                             width="20"
                             height="20"
                         >
                     </button>
                 </li>
-        </header>
-        <header id="small-screen-header">
-            <div id="small-nav-bar-div" class="small-nav-bar-div">
-                <button id="navbar-toggler" type="button">
-                  <img
-                    src="static/img/menu-burger-horizontal-svgrepo-com.png"
-                    alt="hamburger menu icon"
-                    srcset="static/img/menu-burger-horizontal-svgrepo-com.svg"
-                    width="30"
-                    height="30"
-                  />
-                </button>
-            </div>
-            <nav id="small-nav-bar" class="collapsed-block">
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li class="navbaranchor nav-list-item sm-nav-list-item">
-                        <a href="{% url 'home' %}">Homepage</a>
-                    </li>
-                    {% endif %}
-                    <li class="navbaranchor nav-list-item sm-nav-list-item">
-                        <a href="{% url 'reports-list' %}">Search Reports</a>
-                    </li>
-                    <li class="navbaranchor nav-list-item sm-nav-list-item">
-                        <a href="/pages/learn/">Learn About Invaders</a>
-                    </li>
-                    <li class="navbaranchor nav-list-item sm-nav-list-item">
-                        <a href="{% url 'reports-create' %}">Report now</a>
-                    </li>
-                    <li class="navbaranchor nav-list-item sm-nav-list-item">
-                        <a href="{% url 'login' %}">Login</a>
-                    </li>
-                </ul>
-            </nav>
         </header>
 
         <!-- Side Menu Implementation - Layered Above Content, Positioned Below Navbar -->
@@ -230,6 +196,50 @@
                             </a>
                         </li>
                         {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                <img 
+                                    src="/static/img/home.png"
+                                    alt="Search Reports Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reports-list' %}">
+                                <img 
+                                    src="/static/img/search.png" 
+                                    alt="Search Reports Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Search Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pages/learn/">
+                                <img 
+                                    src="/static/img/school.png"
+                                    alt="Learn About Invaders Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Learn About Invaders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'reports-create' %}">
+                                <img 
+                                    src="/static/img/unclaimed.png"
+                                    alt="Report Now Icon" 
+                                    class="sidebar-icon" 
+                                    width="20"
+                                    height="20"
+                                > Report Now
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">
                                 <img 
